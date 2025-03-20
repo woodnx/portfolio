@@ -1,0 +1,17 @@
+---
+import '@/styles/global.css';
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  pageTitle: string
+}
+
+const { pageTitle } = Astro.props;
+---
+<BaseLayout pageTitle={pageTitle} headerTitle=''>
+  <div class="flex-col" slot="header">
+    <p class="text-4xl">ジユウ木ままに</p>
+    <p class="text-xl">written by @woodnx.com</p>
+  </div>
+  <slot />
+</BaseLayout>

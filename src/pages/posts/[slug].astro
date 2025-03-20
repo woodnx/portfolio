@@ -1,0 +1,77 @@
+---
+import '@/styles/github.css';
+import { getCollection, render } from 'astro:content';
+import dayjs from "dayjs";
+import { Icon } from "astro-icon/components";
+import BlogLayout from '@/layouts/BlogLayout.astro';
+import Badge from '@/components/Badge.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('post');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.id }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+
+const lastModified = entry.data.lastModified
+const modified = lastModified && dayjs(lastModified).format("YYYY/MM/DD");
+const publishedAt = dayjs(entry.data.publishedAt).format("YYYY/MM/DD");
+---
+<BlogLayout pageTitle={entry.data.title}>
+  <a href="/blog" class="flex items-center justify-center w-20 px-2 py-1 rounded-md bg-sky-100 text-sky-600 border-1 border-sky-600">
+    <Icon name="tabler:chevron-left" size={20} />
+    Back
+  </a>
+
+  <div class="text-sky-600 font-bold text-4xl my-3">
+    {
+      entry.data.series && 
+      <a href={`/series/${entry.data.series}`} class="font-bold text-xl mb-1">
+        シリーズ: {entry.data.series}
+      </a>
+    }
+    {entry.data.title}
+  </div>
+  
+  <div class="flex gap-5 mb-6">
+    <div class="flex items-center gap-0.5">
+      <Icon name="tabler:calendar-week" />
+      <p>{publishedAt}</p>
+    </div>
+    {
+      modified && 
+      <div class="flex items-center gap-0.5">
+        <Icon name="tabler:refresh" />
+        <p>{modified}</p>
+      </div>
+    }
+    {<Badge label={entry.data.category} link={`/categories/${entry.data.category}`} icon='tabler:category'/>}
+
+    {
+      entry.data.tags && 
+      <div class="flex gap-2">
+        {
+          entry.data.tags?.map((tag) => 
+            <Badge label={tag} link={`/tags/${tag}`} icon='tabler:tag' />
+          )
+        }
+      </div>
+    }
+  </div>
+  
+  <div class="flex flex-wrap gap-4">
+    <aside class="w-12/12 md:w-3/12 md:order-2">
+      <TableOfContents headings={headings}/>
+    </aside>
+    <article class="grow md:w-8/12 md:order-1">
+      <hr class="h-1.5 border-t-0 bg-sky-600 rounded-t-full" />
+      <div data-pagefind-body class="markdown-body px-8 py-6 rounded-b-lg bg-white">
+        <Content />
+      </div>
+    </article>
+  </div>
+</BlogLayout>

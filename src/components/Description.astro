@@ -1,0 +1,12 @@
+---
+interface Props {
+  label: string
+  description: string
+}
+
+const { label, description } = Astro.props
+---
+<div class="flex gap-x-2 items-center text-lg">
+  <p class="flex-none px-2 py-1 rounded-full min-w-30 font-bold bg-sky-600 text-white text-center">{label}</p>
+  <p class="flex-1">{description}</p>
+</div>

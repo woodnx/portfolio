@@ -1,0 +1,59 @@
+---
+import Badge from './Badge.astro';
+import dayjs from 'dayjs';
+import Twemoji from './Twemoji.astro';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  title: string
+  id: string
+  publishedAt: Date | string
+  category: string
+  tags?: string[]
+  entry: string
+  icon?: string
+}
+
+const { title, publishedAt, id, category, tags = [], entry, icon: _icon } = Astro.props;
+
+const published = dayjs(publishedAt).format("YYYY/MM/DD");
+
+const icon = _icon || (
+  category == 'Life' ? '☕️' :
+  category == 'Tech' ? '⚒️' :
+  '🗒️'
+)
+---
+<div
+  class="flex items-center gap-6 px-6 py-2 rounded-2xl border-4 border-transparent hover:border-sky-200" 
+>
+  <a 
+    class="justify-self-center"
+    href={`/posts/${id}`}
+    style="cursor:pointer" 
+  >
+    <Twemoji icon={icon}/>
+  </a>
+  <div class="flex flex-col">
+    <a 
+      class="flex flex-col"
+      href={`/posts/${id}`}
+      style="cursor:pointer" 
+    >
+      <h2>{title}</h2>
+      <p class="mb-1.5 line-clamp-1">{entry}</p>  
+    </a>
+    <div class="flex gap-3">
+      <p class="flex items-center gap-1 text-sm">
+        <Icon name="tabler:calendar-week" />
+        {published}
+      </p>
+      <Badge label={category} link={`/categories/${category}`} icon='tabler:category' />
+      {
+        tags?.map((tag) => 
+          <Badge label={tag} link={`/tags/${tag}`} icon='tabler:tag'/>
+        )
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+---
+interface Props {
+  year: number
+  heading: string
+  description?: string
+}
+
+const { year, heading, description } = Astro.props
+---
+<div class="flex gap-x-5 items-start text-lg">
+  <p class="flex-none flex items-center justify-center rounded-full border-5 border-sky-600 w-20 h-20 p-1 text-sky-600 font-bold text-xl">
+    {year}
+  </p>
+  <div class="">
+    <p class="font-bold text-sky-600 text-xl">{heading}</p>
+    <slot class="w-100"/>
+  </div>  
+</div>

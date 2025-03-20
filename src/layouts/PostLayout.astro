@@ -1,0 +1,63 @@
+---
+import '@/styles/github.css';
+import { Icon } from "astro-icon/components";
+import dayjs from "dayjs";
+import Badge from '@/components/Badge.astro';
+import BlogLayout from "./BlogLayout.astro";
+
+interface Props {
+  frontmatter: PostFrontmatter
+}
+
+const { frontmatter } = Astro.props;
+
+const lastModified = frontmatter.lastModified
+const modified = lastModified && dayjs(lastModified).format("YYYY/MM/DD");
+---
+<BlogLayout pageTitle={frontmatter.title}>
+  <a href="/blog" class="flex items-center justify-center w-1/12 px-2 py-1 rounded-md bg-sky-100 text-sky-600 border-1 border-sky-600">
+    <Icon name="tabler:chevron-left" size={20} />
+    Back
+  </a>
+
+  <div class="text-sky-600 font-bold text-4xl my-3">
+    {
+      frontmatter.series && 
+      <a href={`/series/${frontmatter.series}`} class="font-bold text-xl mb-1">
+        シリーズ: {frontmatter.series}
+      </a>
+    }
+    {frontmatter.title}
+  </div>
+  
+  <div class="flex gap-5 mb-6">
+    <div class="flex items-center gap-0.5">
+      <Icon name="tabler:send" />
+      <p>{frontmatter.publishedAt.toLocaleString("ja").slice(0,10).split('-').join('/')}</p>
+    </div>
+    {
+      modified && 
+      <div class="flex items-center gap-0.5">
+        <Icon name="tabler:refresh" />
+        <p>{modified}</p>
+      </div>
+    }
+    {<Badge label={frontmatter.category} link={`/categories/${frontmatter.category}`} icon='tabler:folder'/>}
+
+    {
+      frontmatter.tags && 
+      <div class="flex gap-2">
+        {
+          frontmatter.tags?.map((tag) => 
+            <Badge label={tag} link={`/tags/${tag}`} icon='tabler:tag'/>
+          )
+        }
+      </div>
+    }
+  </div>
+  
+  <hr class="h-1.5 border-t-0 bg-sky-600 rounded-t-full w-[75%]" />
+  <div data-pagefind-body class="markdown-body px-8 py-6 rounded-b-lg bg-white w-[75%]">
+    <slot/>
+  </div>
+</BlogLayout>

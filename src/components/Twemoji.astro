@@ -1,0 +1,22 @@
+---
+interface Props {
+  icon: string
+}
+
+const { icon } = Astro.props;
+---
+<div id="twemoji">
+  {icon}
+</div>
+
+<script>
+// @ts-ignore
+twemoji.parse(document.getElementById('twemoji'));
+</script>
+
+<style>
+  #twemoji {
+    width: 4.5em;
+    height: 4.5em;
+  }
+</style>

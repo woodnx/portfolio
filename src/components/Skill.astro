@@ -1,0 +1,17 @@
+---
+import { Icon } from 'astro-icon/components'
+import Rating from './Rating.astro'
+
+interface Props {
+  label: string
+  rate: number
+  icon?: string
+}
+
+const { label, rate, icon } = Astro.props
+---
+<div class="flex flex-col items-center">
+  <Icon name={icon || `devicon:${label.toLowerCase()}`} size={50} />
+  <p>{label}</p>
+  <Rating rate={rate}/>
+</div>

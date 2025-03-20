@@ -1,0 +1,102 @@
+---
+import { getCollection } from 'astro:content';
+import { Icon } from 'astro-icon/components';
+import dayjs from 'dayjs';
+import BlogLayout from '@/layouts/BlogLayout.astro';
+import Section from '@/components/Section.astro';
+import Badge from '@/components/Badge.astro';
+import Search from '@/components/Search.astro';
+import BlogPost from '@/components/BlogPost.astro';
+
+const posts = await getCollection('post');
+const sortedPosts = posts.sort((a, b) => {
+  const aDate = a.data.lastModified || a.data.publishedAt;
+  const bDate = b.data.lastModified || b.data.publishedAt;
+
+  return dayjs(bDate).diff(dayjs(aDate));
+});
+const resentPosts = sortedPosts.slice(0, 8);
+
+const series = [...new Set(posts.map((post) => post.data.series).flat())];
+const categories = [...new Set(posts.map((post) => post.data.category).flat())];
+const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
+
+const pageTitle = "Blog";
+---
+<BlogLayout pageTitle={pageTitle}>
+  <Section title="Recent Posts">
+    <div class="grid grid-cols-1 gap-4">
+      {resentPosts.map((post) => 
+        <BlogPost 
+          id={post.id}
+          entry={post.body}
+          title={post.data.title}
+          icon={post.data.icon}
+          publishedAt={post.data.publishedAt}
+          category={post.data.category}
+          tags={post.data.tags}
+        />
+      )}
+    </div>
+    <div class="flex justify-center mt-5">
+      <a href="/posts" class="btn btn-lg btn-wide bg-sky-100 border-sky-200 text-sky-600 rounded-full">
+        All Posts
+      </a>
+    </div>
+  </Section>
+
+  <!-- <Section title="Series" class="mt-4">
+    {series}
+  </Section> -->
+
+  <Section title="Search" class="mt-4">
+    <div class="flex flex-wrap">
+      <button 
+        class="basis-12/12 md:basis-10/12 flex items-center gap-5 px-4 p-1 text-lg border-2 border-sky-600 rounded-full" 
+        style="cursor:pointer"
+        onclick="modal.showModal()"
+      >
+        <Icon name="tabler:search" size={20}/>
+        <p class="text-slate-400">Keyword</p>
+      </button>
+
+      <div class="basis-12/12 flex gap-4 mt-4">
+        {
+          tags?.map((tag) => 
+            <Badge 
+              label={tag} 
+              link={`/tags/${tag}`}
+              icon='tabler:tag'
+            />
+          )
+        }
+      </div>
+    </div>
+
+    <div class="flex gap-4 mt-4">
+      {
+        categories?.map((category) => 
+          <Badge 
+            label={category} 
+            link={`/categories/${category}`} 
+            icon='tabler:category'
+          />
+        )
+      }
+    </div>
+  </Section>
+</BlogLayout>
+
+<dialog id="modal" class="modal">
+  <div class="modal-box w-11/12 max-w-5xl">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <div class="mt-4">
+      <Search />
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>

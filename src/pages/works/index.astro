@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import Section from '@/components/Section.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Work from '@/components/Work.astro';
+
+const allWorks = await getCollection('work');
+
+const categories = [ ...new Set(allWorks.map((work) => work.data.category).flat().sort()) ];
+const worksByCategories = categories.map((category) => ({
+  category,
+  works: allWorks.filter((work) => work.data.category == category)
+}));
+
+const pageTitle = "Works";
+---
+<BaseLayout pageTitle={pageTitle}>
+  {
+    worksByCategories.map(({category, works}) => (
+      <Section title={category}>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {
+            works.map(({ id, data }) => (
+            <Work
+              title={data.title}
+              description={data.description}
+              image={data.image}
+              id={id}
+              tags={data.tags}
+            />
+            ))
+          }
+        </div>
+      </Section>
+    ))
+  }
+</BaseLayout>

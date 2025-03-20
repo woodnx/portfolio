@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+html {
+  font-family: "M PLUS Rounded 1c", "twemoji", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: oklch(0.372 0.044 257.287); /* slate-700 */
+}
+
+html, body {
+  height: 100%;
+  line-height: 1.6;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+h3 {
+  font-weight: bold;
+}
+

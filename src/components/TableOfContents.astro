@@ -1,0 +1,25 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[],
+}
+
+const { headings } = Astro.props;
+---
+<div>
+  <h2 class="text-sky-600">目次</h2>
+  <hr class="h-1 border-t-0 bg-sky-600 rounded-t-full" />
+  <div class="toc px-4 py-2 rounded-b-lg bg-white">
+    <ol class="">
+      {headings.map(({slug, depth, text}) => (
+        <li class="relative pl-6 before:bg-sky-600 before:rounded-full before:absolute before:h-[8px] before:w-[8px] before:top-[0.6em] before:-left-[0.125em]">
+          <a 
+            class={`${depth == 1 ? "font-bold" : "pl-[1em]"}`}
+            href={`#${slug}`}
+          >{text}</a>
+        </li> 
+      ))}
+    </ol>
+  </div>
+</div>

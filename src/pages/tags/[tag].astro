@@ -1,0 +1,62 @@
+---
+import { getCollection } from 'astro:content';
+import { Icon } from 'astro-icon/components';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Card from '@/components/Card.astro';
+import Badge from '@/components/Badge.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('post');
+
+  const uniqueTags = [...new Set(posts.map((post) => post.data.tags).flat())];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = posts.filter((post) => post.data.tags.includes(tag));
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+};
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+<BaseLayout pageTitle={tag}>
+  <div class="flex justify-between items-center">
+    <h1 class="text-sky-600">Tag "{tag}"</h1>
+    <p>{posts.length} posts</p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2  gap-4">
+    {posts.map((post) => 
+      <Card url={`/posts/${post.id}`}>
+        <a href={`/posts/${post.id}`}>
+          <h3>{post.data.title}</h3>
+          {
+            post.data.publishedAt && 
+            <p class="flex items-center gap-1 text-sm">
+              <Icon name="tabler:calendar-week" />
+              {post.data.publishedAt.toLocaleString("ja").slice(0,10).split('-').join('/')}
+            </p>
+          }
+        </a>
+        <div class="flex flex-wrap gap-1 mt-1">
+          <Badge
+            label={post.data.category} 
+            link={`/categories/${post.data.category}`} 
+            icon='tabler:category'
+          />
+          {
+            post.data.tags.map((tag) => 
+              <Badge 
+                label={tag} 
+                link={`/tags/${tag}`} 
+                icon='tabler:tag'
+              />
+            )
+          }
+        </div>
+      </Card>
+    )}
+  </div>
+</BaseLayout>

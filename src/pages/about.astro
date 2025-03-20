@@ -1,0 +1,153 @@
+---
+import Section from '@/components/Section.astro';
+import Description from '@/components/Description.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import profileImg from "../images/profile.png";
+import Career from '@/components/Career.astro';
+import Skill from '@/components/Skill.astro';
+
+const pageTitle = "About me";
+---
+<BaseLayout pageTitle={pageTitle}>
+  <Section title="Profile">
+    <div class="md:flex gap-x-8 gap-y-4 items-center">
+      <Image src={profileImg} alt="画像の説明。" class="rounded-full w-42 border-5 border-sky-200 justify-self-center" />
+      <div class="grid grid-cols-1 gap-y-2 mt-2">
+        <Description 
+          label="専門"
+          description="情報工学"
+        />
+        <Description 
+          label="趣味"
+          description="個人開発、音楽・アニメ・映画鑑賞、ゲーム"
+        />
+        <Description 
+          label="好きなこと"
+          description="何かをつくること、飲み会、カラオケ"
+        />
+        <Description 
+          label="持病"
+          description="1型糖尿病"
+        />
+      </div>
+    </div>
+  </Section>
+
+  <Section title="Skills" class="my-4">
+    <h2 class="text-sky-600">Languages</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-6 gap-x-8 gap-y-4 mt-2">
+      <Skill label="TypeScript" rate={4}/>
+      <Skill label="Python" rate={4}/>
+      <Skill label="Ruby" rate={2}/>
+      <Skill label="HTML" icon="devicon:html5" rate={3}/>
+      <Skill label="CSS" icon="devicon:css3" rate={3}/>
+      <Skill label="C" rate={3}/>
+      <Skill label="C++" icon="devicon:cplusplus" rate={3}/>
+      <Skill label="C#" icon="devicon:csharp" rate={2}/>
+      <Skill label="Go" icon="devicon:go-wordmark" rate={1}/>
+      <Skill label="LaTeX" rate={3}/>
+    </div>
+
+    <h2 class="text-sky-600 mt-5">Libraries & Frameworks</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-6 gap-x-8 gap-y-4 mt-2">
+      <Skill label="React" rate={4}/>
+      <Skill label="Vue.js" icon="devicon:vuejs" rate={3}/>
+      <Skill label="Astro" rate={2}/>
+      <Skill label="Next.js" icon="devicon:nextjs" rate={1}/>
+      <Skill label="Ruby on Rails" icon="devicon:rails-wordmark" rate={2}/>
+      <Skill label="Unity" rate={3}/>
+    </div>
+
+    <h2 class="text-sky-600 mt-5">Infra</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-6 gap-x-8 gap-y-4 mt-2">
+      <Skill label="MariaDB" rate={4}/>
+      <Skill label="PostgreSQL" rate={2}/>
+      <Skill label="Docker" rate={2}/>
+      <Skill label="Apache" rate={2}/>
+      <Skill label="nginx" rate={2}/>
+    </div>
+
+    <h2 class="text-sky-600 mt-5">Envionments & Tools</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-6 gap-x-8 gap-y-4 mt-2">
+      <Skill label="VScode" rate={4}/>
+      <Skill label="Vim" rate={3}/>
+      <Skill label="Git" rate={4}/>
+      <Skill label="GitHub" rate={4}/>
+      <Skill label="Debian" rate={3}/>
+      <Skill label="Inkscape" rate={4}/>
+      <Skill label="Blender" rate={2}/>
+    </div>
+  </Section>
+
+  <Section title="History" class="my-4">
+    <div class="grid grid-cols-1 gap-y-4">
+      <Career 
+        year={2002}
+        heading="鳥取県 米子市に生まれる"
+      >
+        小さい頃から手を動かすのが好きだった。
+      </Career>
+
+      <Career 
+        year={2015}
+        heading="地元の中学校に入学"
+      >
+        この頃にはじめてプログラミングにふれる。
+        初めてつくったものは英日翻訳アプリ。
+      </Career>
+
+      <Career 
+        year={2018}
+        heading="松江工業高等専門学校 情報工学科に入学"
+      >
+        本格的に情報工学について学びたいと思い、高専に進学。<br>
+        在学中には、プログラミングコンテストや学内プロジェクトに参加した。
+      </Career>
+
+      <Career 
+        year={2023}
+        heading="東京都立大学 システムデザイン学部 情報科学科に編入学"
+      >
+        3年間、テーマを一貫した研究をしてみたくて院進を視野に入れた編入学を目指す。<br>
+        チームでのゲーム開発もやってみたかった。<br>
+      </Career>
+
+      <Career 
+        year={2025}
+        heading="同大学院に進学 (予定)"
+      >
+        当初の予定通り、院進。
+      </Career>
+    </div>
+  </Section>
+
+  <Section title="Favorites">
+    <div class="grid grid-cols-1 gap-y-4">
+      <Description 
+        label="好きな映画"
+        description="『シン・ゴジラ』『バック・トゥ・ザ・フューチャー』『タイタニック』"
+      />
+      <Description 
+        label="好きな特撮"
+        description="『ウルトラQ』『日本沈没 (1974年版)』"
+      />
+      <Description 
+        label="好きな漫画"
+        description="『NEW GAME!』『ふつうの軽音部』"
+      />
+      <Description 
+        label="好きなアニメ"
+        description="『名探偵コナン』『宇宙戦艦ヤマト2199』『ガールズ&パンツァー』『君の名は。』『エヴァンゲリオン』他"
+      />
+      <Description 
+        label="好きなゲーム"
+        description="『ゼルダの伝説』『Splatoon』『逆転裁判』他"
+      />
+      <Description 
+        label="好きなアーティスト"
+        description="RADWINPS、Officail髭男dism、星野源、ポルノグラフィティ"
+      />
+    </div>
+  </Section>
+</BaseLayout>

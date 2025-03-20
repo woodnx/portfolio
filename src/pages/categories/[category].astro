@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogPost from '@/components/BlogPost.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('post');
+
+  const uniqueCategories = [...new Set(posts.map((post) => post.data.category).flat())];
+
+  return uniqueCategories.map((category) => {
+    const filteredPosts = posts.filter((post) => post.data.category == category);
+    return {
+      params: { category },
+      props: { posts: filteredPosts },
+    };
+  });
+};
+
+const { category } = Astro.params;
+const { posts } = Astro.props;
+---
+<BaseLayout pageTitle={category}>
+  <div class="flex justify-between items-center">
+    <h1 class="text-sky-600">Category "{category}"</h1>
+    <p>{posts.length} posts</p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2  gap-4">
+    {posts.map((post) => 
+      <BlogPost 
+        id={post.id}
+        entry={post.body || ''}
+        title={post.data.title}
+        publishedAt={post.data.publishedAt}
+        category={post.data.category}
+        tags={post.data.tags}
+      />
+    )}
+  </div>
+</BaseLayout>

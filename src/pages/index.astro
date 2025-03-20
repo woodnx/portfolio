@@ -1,11 +1,88 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import dayjs from 'dayjs';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AndMore from '@/components/AndMore.astro';
+import Section from '@/components/Section.astro';
+import Description from '@/components/Description.astro';
+import Work from '@/components/Work.astro';
+import BlogPost from '@/components/BlogPost.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const posts = await getCollection('post');
+const works = await getCollection('work');
+const sortedPosts = posts.sort((a, b) => {
+  const aDate = a.data.lastModified || a.data.publishedAt;
+  const bDate = b.data.lastModified || b.data.publishedAt;
+
+  return dayjs(bDate).diff(dayjs(aDate));
+});
+const sortedWorks = works
+.filter(work => work.data.pinned)
+.sort((a, b) => {
+  const aDate = a.data.developedStart;
+  const bDate = b.data.developedStart;
+
+  return dayjs(bDate).diff(dayjs(aDate));
+});
+
+const resentPosts = sortedPosts.slice(0, 4);
+const resentWorks = sortedWorks.slice(0, 3);
+
+const pageTitle = "woodnx";
 ---
+<BaseLayout pageTitle={pageTitle}>
+  <Section title="About me">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+      <Description 
+        label="現所属"
+        description="東京都立大学 システムデザイン学部 情報科学科"
+      />
+      <Description 
+        label="研究内容"
+        description="音響信号処理"
+      />
+      <Description 
+        label="好きなこと"
+        description="何かをつくること"
+      />
 
-<Layout>
-	<Welcome />
-</Layout>
+      <AndMore link='/about'/>
+    </div>
+  </Section>
+
+  <Section title="Works" class="my-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 items-center">
+      {
+        resentWorks.map(work => 
+          <Work 
+            id={work.id}
+            title={work.data.title}
+            description={work.data.description}
+            image={work.data.image}
+            tags={work.data.tags}
+          />
+        )
+      }
+      <AndMore link='/works'/>
+    </div>
+  </Section>
+
+  <Section title="Blog" class="my-4">
+    <div class="grid grid-cols-1 gap-x-8 gap-y-4 items-center">
+      {
+        resentPosts.map(post => 
+          <BlogPost 
+            id={post.id}
+            entry={post.body || ''}
+            title={post.data.title}
+            icon={post.data.icon}
+            publishedAt={post.data.publishedAt}
+            category={post.data.category}
+            tags={post.data.tags}
+          />
+        )
+      }
+      <AndMore link='/blog'/>
+    </div>
+  </Section>
+</BaseLayout>

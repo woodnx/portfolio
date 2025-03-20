@@ -1,0 +1,24 @@
+---
+import { Icon } from 'astro-icon/components'
+
+interface Props {
+  label: string
+  description: string
+  icon: string
+  iconColor?: string
+  link?: string
+}
+
+const { label, description, link, icon, iconColor } = Astro.props;
+---
+<a class="flex items-center gap-5 px-2 py-1 rounded-2xl border-2 border-white hover:border-sky-200" style={link && "cursor:pointer"} href={link}>
+  <div class="items-center justify-self-center ml-5">
+    <Icon name={icon} color={iconColor} size={50}/>
+  </div>
+  <div class="grid grid-cols-1">
+    <h2>{label}</h2>
+    <p class="mb-2 line-clamp-1">
+      {description}
+    </p>
+  </div>
+</a>

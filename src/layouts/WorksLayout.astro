@@ -1,0 +1,36 @@
+---
+import '@/styles/github.css';
+import { Icon } from "astro-icon/components";
+import Badge from "@/components/Badge.astro";
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  frontmatter: WorkFrontmatter
+}
+
+const { frontmatter } = Astro.props;
+---
+<BaseLayout pageTitle={frontmatter.title}>
+  <a href="/works" class="flex items-center justify-center w-1/12 px-2 py-1 rounded-md bg-sky-100 text-sky-600 border-1 border-sky-600">
+    <Icon name="tabler:chevron-left" size={20} />
+    Back
+  </a>
+  <p class="text-sky-600 font-bold text-4xl my-3">
+    {frontmatter.title}
+  </p>
+  <div class="flex gap-5 mb-6">
+    <div>{frontmatter.developedAt}</div>
+    { 
+      frontmatter.techs && 
+      <div class="flex gap-1">
+        { frontmatter.techs.map(tech => <Badge label={tech} icon="tabler:cpu"/>) }
+      </div>
+    }
+  </div>
+
+  <hr class="h-1.5 border-t-0 bg-sky-600 rounded-t-full w-[75%]" />
+  <div data-pagefind-body class="markdown-body px-8 py-6 rounded-b-lg bg-white w-[75%]">
+    <slot />
+  </div>
+</BaseLayout>
+    
