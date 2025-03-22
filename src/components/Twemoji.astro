@@ -1,6 +1,7 @@
 ---
 interface Props {
   icon: string
+  size?: string
 }
 
 const { icon } = Astro.props;
@@ -16,7 +17,14 @@ twemoji.parse(document.getElementById('twemoji'));
 
 <style>
   #twemoji {
-    width: 4.5em;
-    height: 4.5em;
+    width: 3em;
+    height: 3em;
+  }
+
+  @media (min-width: 768px) {
+    #twemoji {
+      width: 4.25em;
+      height: 4.25em;
+    }
   }
 </style>
