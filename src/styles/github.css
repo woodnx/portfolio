@@ -437,12 +437,18 @@
   border-left: .25em solid var(--borderColor-default);
 }
 
-.markdown-body ul,
-.markdown-body ol {
+.markdown-body ul {
+  list-style-type: disc; /* 箇条書きの点を表示 */
   margin-top: 0;
   margin-bottom: 0;
   padding-left: 2em; /* 適切なインデントを設定 */
-  list-style-type: disc; /* 箇条書きの点を表示 */
+}
+
+.markdown-body ol {
+  list-style-type: decimal; /* 番号付きリストを表示 */
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 2em; /* 適切なインデントを設定 */
 }
 
 .markdown-body ul ul,
@@ -452,7 +458,18 @@
   margin-top: 0;
   margin-bottom: 0;
   padding-left: 2em; /* 適切なインデントを設定 */
-  list-style-type: circle; /* ネストされたリストのスタイルを設定 */
+}
+
+.markdown-body ol ol {
+  list-style-type: lower-roman; /* ネストされた番号付きリストのスタイル */
+}
+
+.markdown-body ul ul {
+  list-style-type: circle;
+}
+
+.markdown-body ul ul ul {
+  list-style-type: square;
 }
 
 .markdown-body ul.no-list,
