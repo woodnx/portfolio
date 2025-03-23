@@ -37,7 +37,7 @@ const publishedAt = dayjs(entry.data.publishedAt).format("YYYY/MM/DD");
     <p>{entry.data.title}</p>
   </div>
   
-  <div class="flex flex-wrap gap-5 mb-6">
+  <div class="flex flex-wrap gap-x-5 gap-y-1 mb-6">
     <div class="flex items-center gap-0.5">
       <Icon name="tabler:calendar-week" />
       <p>{publishedAt}</p>
@@ -53,7 +53,7 @@ const publishedAt = dayjs(entry.data.publishedAt).format("YYYY/MM/DD");
 
     {
       entry.data.tags && 
-      <div class="flex gap-2">
+      <div class="flex gap-2 overflow-x-auto">
         {
           entry.data.tags?.map((tag) => 
             <Badge label={tag} link={`/tags/${tag}`} icon='tabler:tag' />

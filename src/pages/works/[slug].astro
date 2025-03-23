@@ -29,7 +29,7 @@ const developed = developedStart + developedEnd;
   <p class="text-sky-600 font-bold text-4xl my-3">
     {entry.data.title}
   </p>
-  <div class="flex flex-wrap gap-5 mb-6">
+  <div class="flex flex-wrap gap-x-5 gap-y-1 mb-6">
     <div class="flex items-center gap-0.5">
       <Icon name="tabler:calendar-code" />
       <p>{developed}</p>
@@ -44,7 +44,7 @@ const developed = developedStart + developedEnd;
 
     {
       entry.data.tags && 
-      <div class="flex gap-2 overflow-x-scroll">
+      <div class="tagbar flex gap-2 overflow-x-auto">
         {
           entry.data.tags?.map((tag) => 
             <Badge label={tag} link={`/tags/${tag}`} icon='tabler:tag' />
