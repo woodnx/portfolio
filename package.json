@@ -10,9 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@expressive-code/plugin-line-numbers": "^0.40.2",
     "@pagefind/default-ui": "^1.3.0",
     "@tailwindcss/vite": "^4.0.13",
     "astro": "^5.4.0",
+    "astro-expressive-code": "^0.40.2",
     "astro-icon": "^1.1.5",
     "daisyui": "^5.0.3",
     "dayjs": "^1.11.13",
