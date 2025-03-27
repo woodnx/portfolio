@@ -19,7 +19,6 @@ const { Content, headings } = await render(entry);
 
 const lastModified = entry.data.lastModified
 const modified = lastModified && dayjs(lastModified).format("YYYY/MM/DD");
-const publishedAt = dayjs(entry.data.publishedAt).format("YYYY/MM/DD");
 ---
 <BlogLayout pageTitle={entry.data.title}>
   <a href="/blog" class="flex items-center justify-center w-20 px-2 py-1 rounded-md bg-sky-100 text-sky-600 border-1 border-sky-600">
@@ -40,7 +39,7 @@ const publishedAt = dayjs(entry.data.publishedAt).format("YYYY/MM/DD");
   <div class="flex flex-wrap gap-x-5 gap-y-1 mb-6">
     <div class="flex items-center gap-0.5">
       <Icon name="tabler:calendar-week" />
-      <p>{publishedAt}</p>
+      <p>{entry.data.publishedAt}</p>
     </div>
     {
       modified && 

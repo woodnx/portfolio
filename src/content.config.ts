@@ -25,6 +25,13 @@ const workCollection = defineCollection({
   schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string().optional(),
+    publishedAt: z.string()
+      .or(z.date())
+      .transform((date) => dayjs(date).format('YYYY/MM/DD')),
+    lastModified: z.string()
+      .or(z.date())
+      .transform((date) => dayjs(date).format('YYYY/MM/DD'))
+      .optional(),
     image: image(),
     alt: z.string(),
     developedStart: z.string()
