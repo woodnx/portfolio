@@ -17,6 +17,8 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
 
+const lastModified = entry.data.lastModified
+const modified = lastModified && dayjs(lastModified).format("YYYY/MM/DD");
 const developedStart = dayjs(entry.data.developedStart).format('YYYY/MM～');
 const developedEnd = entry.data.developedEnd ? dayjs(entry.data.developedStart).format('YYYY/MM') : '';
 const developed = developedStart + developedEnd;
@@ -30,6 +32,17 @@ const developed = developedStart + developedEnd;
     {entry.data.title}
   </p>
   <div class="flex flex-wrap gap-x-5 gap-y-1 mb-6">
+    <div class="flex items-center gap-0.5">
+      <Icon name="tabler:calendar-week" />
+      <p>{entry.data.publishedAt}</p>
+    </div>
+    {
+      modified && 
+      <div class="flex items-center gap-0.5">
+        <Icon name="tabler:refresh" />
+        <p>{modified}</p>
+      </div>
+    }
     <div class="flex items-center gap-0.5">
       <Icon name="tabler:calendar-code" />
       <p>{developed}</p>
