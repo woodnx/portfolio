@@ -13,17 +13,19 @@ interface Props {
 const { title, description, image, id, tags = [] } = Astro.props;
 ---
 <div class="border-4 border-sky-200 md:border-transparent hover:border-sky-200 rounded-2xl">
-  <figure>
-    <Image src={image} alt="" class="rounded-t-lg object-cover h-30" />
-  </figure>
-  <div class="px-3">
+  <a href={`/works/${id}`}>
+    <figure>
+      <Image src={image} alt="" class="rounded-t-xl object-cover h-30" />
+    </figure>
+  </a>
+  <div class="p-3 pt-2">
     <a href={`/works/${id}`}>
       <h3 class="text-2xl">{title}</h3>
       <p class="mb-2 line-clamp-1">
         {description}
       </p>
     </a>
-    <div class="flex flex-wrap mb-3 gap-1">
+    <div class="flex flex-wrap gap-1">
       {
         tags?.map((tag) => 
           <Badge label={tag} link={`/tags/${tag}`} icon='tabler:tag'/>
