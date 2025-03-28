@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   portfolio:
     build:
@@ -6,7 +5,7 @@ services:
       dockerfile: Dockerfile
     container_name: portfolio
     volumes:
-      - .:/app
+      - .:portfolio
     ports:
       - "8080:8080"
     env_file: 
@@ -15,4 +14,4 @@ services:
 networks:
   default:
     external:
-      name: shared
+      name: nginx-proxy_default
