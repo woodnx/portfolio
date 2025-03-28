@@ -1,0 +1,28 @@
+name: format-markdown
+on: 
+  pull_request:
+    types:
+      - opened
+      - reopened
+    branches:
+      - main
+    paths:
+      - '**.md'
+
+jobs:
+  format-markdown: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Replace punctuations
+        run: |
+          sed -i s/．/。/g ./src/content/**/*.md
+          sed -i s/，/、/g ./src/content/**/*.md
+    
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet || (git commit -am "Fix punctuation in markdown files" && git push)
