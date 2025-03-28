@@ -36,7 +36,7 @@ jobs:
             cd ${{ secrets.SSH_PROJECT_PATH }}
 
             # Create `.env`
-            echo "VIRTUAL_PORT=${{ secrets.VIRTUAL_PROTO }}" > .env
+            echo "VIRTUAL_PROTO=${{ secrets.VIRTUAL_PROTO }}" > .env
             echo "VIRTUAL_PORT=${{ secrets.VIRTUAL_PORT }}" > .env
             echo "VIRTUAL_HOST=${{ secrets.VIRTUAL_HOST }}" > .env
             echo "LETSENCRYPT_HOST=${{ secrets.VIRTUAL_HOST }}" >> .env
