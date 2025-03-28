@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     container_name: portfolio
     volumes:
-      - .:portfolio
+      - .:/portfolio
     ports:
       - "8080:8080"
     env_file: 
