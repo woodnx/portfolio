@@ -12,5 +12,6 @@ services:
       - .env
 
 networks:
-  nginx-proxy_default:
+  default:
+    name: nginx-proxy_default
     external: true
