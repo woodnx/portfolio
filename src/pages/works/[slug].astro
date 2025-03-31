@@ -15,9 +15,9 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content, headings } = await render(entry);
+const { Content, headings, remarkPluginFrontmatter } = await render(entry);
 
-const lastModified = entry.data.lastModified
+const lastModified = remarkPluginFrontmatter.lastModified
 const modified = lastModified && dayjs(lastModified).format("YYYY/MM/DD");
 const developedStart = dayjs(entry.data.developedStart).format('YYYY/MM～');
 const developedEnd = entry.data.developedEnd ? dayjs(entry.data.developedStart).format('YYYY/MM') : '';
