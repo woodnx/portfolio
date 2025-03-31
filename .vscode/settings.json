@@ -1,5 +1,7 @@
 {
   "files.associations": {
     "*.css": "tailwindcss"
-  }
+  },
+  "textlint.autoFixOnSave": true,
+  "textlint.languages": ["markdown"]
 }

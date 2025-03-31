@@ -1,0 +1,13 @@
+rules: 
+  prh: 
+    rulePaths: 
+      - ./rules.yml
+  preset-writing: 
+    no-mix-dearu-desumasu: 
+      preferInHeader: である
+      preferInBody: である
+      strict: true
+    no-exclamation-question-mark: false
+    ja-no-weak-phrase: false
+    no-double-negative-ja: false
+      
