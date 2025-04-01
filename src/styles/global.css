@@ -18,6 +18,14 @@ body {
   flex-direction: column;
 }
 
+body footer, body p, body span, a, body dl, h1, h2, h3, h4, h5, h6, body li {
+  transform: rotate(0.03deg);
+  -moz-transform: rotate(0.03deg);
+  -ms-transform: rotate(0.03deg);
+  -o-transform: rotate(0.03deg);
+  -webkit-transform: rotate(0.03deg);
+}
+
 * {
   box-sizing: border-box;
 }
