@@ -29,7 +29,7 @@ const pageTitle = "Blog";
       {resentPosts.map((post) => 
         <BlogPost 
           id={post.id}
-          entry={post.body}
+          entry={post.body || ''}
           title={post.data.title}
           icon={post.data.icon}
           publishedAt={post.data.publishedAt}
@@ -64,7 +64,7 @@ const pageTitle = "Blog";
         {
           tags?.map((tag) => 
             <Badge 
-              label={tag} 
+              label={tag || ''} 
               link={`/tags/${tag}`}
               icon='tabler:tag'
             />

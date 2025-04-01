@@ -8,6 +8,10 @@ interface Props {
 
 const { pageTitle } = Astro.props;
 ---
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} headerTitle=''>
+  <div class="flex-col" slot="header">	
+    <p class="text-4xl">自分ノート</p>	
+    <p class="text-xl">written by @woodnx.com</p>	
+  </div>
   <slot />
 </BaseLayout>
