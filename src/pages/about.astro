@@ -6,14 +6,32 @@ import { Image } from 'astro:assets';
 import profileImg from "../images/profile.png";
 import Career from '@/components/Career.astro';
 import Skill from '@/components/Skill.astro';
+import Social from '@/components/Social.astro';
 
 const pageTitle = "About me";
 ---
 <BaseLayout pageTitle={pageTitle}>
   <Section title="Profile">
-    <div class="md:flex gap-x-8 gap-y-4 items-center">
-      <Image src={profileImg} alt="画像の説明。" class="rounded-full w-42 border-5 border-sky-200 justify-self-center" />
-      <div class="grid grid-cols-1 gap-y-2 mt-2">
+    <div class="flex flex-col md:flex-row gap-x-8 gap-y-4 items-center justify-items-center">
+      <div class="w-42">
+        <Image 
+          src={profileImg} 
+          alt="プロフィール画像" 
+          class="rounded-full w-42 border-5 border-sky-200 justify-self-center" 
+        />
+        <div class="relative bottom-10 -mb-10 flex justify-between">
+          <Social 
+            platform='x' 
+            username='woodnx_' 
+            icon='tabler:brand-twitter-filled'
+          />
+          <Social 
+            platform='github' 
+            username='woodnx'
+          />
+        </div>
+      </div>
+      <div class="flex flex-col gap-2 mt-2">
         <Description 
           label="専門"
           description="情報工学"
