@@ -1,14 +1,22 @@
 ---
-const { platform, username } = Astro.props;
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  platform: string
+  username: string
+  icon?: string
+}
+
+const { platform, username, icon, } = Astro.props;
 ---
 
-<a href={`https://www.${platform}.com/${username}`}>{platform}</a>
-
-<style>
-  a {
-    padding: 0.5rem 1rem;
-    color: #28ceeb;
-    background-color: white;
-    text-decoration: none;
-  }
-</style>
+<a 
+  href={`https://www.${platform}.com/${username}`}
+  class="rounded-full bg-sky-200 p-2"
+>
+  <Icon 
+    name={icon || `tabler:brand-${platform}-filled`} 
+    size={38}
+    color="oklch(0.588 0.158 241.966)"
+  />
+</a>
