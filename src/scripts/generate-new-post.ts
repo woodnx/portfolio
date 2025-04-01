@@ -2,15 +2,12 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 import { customAlphabet } from 'nanoid';
-import dayjs from 'dayjs';
 
 const directory = './src/content/blog';
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 16);
 const frontmatter = {
-  layout: '@/layouts/PostLayout.astro',
   title: '',
-  publishedAt: dayjs().format('YYYY-MM-DD'),
-  description: '',
+  icon: '',
   category: '',
   tags: [],
 };
