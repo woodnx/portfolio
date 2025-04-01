@@ -1,6 +1,14 @@
+---
+import { execSync } from "child_process";
+import dayjs from "dayjs";
+
+const result = execSync('git log -1 --pretty="format:%cI"');
+const lastModified = dayjs(result.toString()).format('YYYY/MM/DD');
+---
 <footer class="text-center font-bold bg-sky-200">
-  最終更新: 2025/03/04 <br>
-  © 2025 @woodnx
+  © 2025 woodnx.com | Powered by Astro<br>
+  
+  Last modified: {lastModified}
 </footer>
 
 <style>
