@@ -129,7 +129,7 @@
   margin: 0;
   color: var(--fgColor-default);
   background-color: var(--bgColor-default);
-  font-family: -apple-system,BlinkMacSystemFont,"M PLUS Rounded 1c", "Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-family: "M PLUS Rounded 1c", "Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
   font-size: 16px;
   line-height: 1.7;
   word-wrap: break-word;
