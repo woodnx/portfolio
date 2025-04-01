@@ -2,7 +2,7 @@ rules:
   prh: 
     rulePaths: 
       - ./rules.yml
-  preset-writing: 
+  preset-ja-technical-writing: 
     no-mix-dearu-desumasu: 
       preferInHeader: である
       preferInBody: である
@@ -10,4 +10,3 @@ rules:
     no-exclamation-question-mark: false
     ja-no-weak-phrase: false
     no-double-negative-ja: false
-      
