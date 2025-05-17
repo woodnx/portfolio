@@ -3,7 +3,7 @@ import path from 'path';
 import yaml from 'js-yaml';
 import { customAlphabet } from 'nanoid';
 
-const directory = './src/content/blog';
+const directory = './src/content/post';
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 16);
 const frontmatter = {
   title: '',
