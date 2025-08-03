@@ -19,7 +19,7 @@ jobs:
           npm -v
       
       - name: Install pnpm
-        uses: pnpm/action-setup@v2.2.2
+        uses: pnpm/action-setup@v4
   
       - name: Install packages
         run: |
