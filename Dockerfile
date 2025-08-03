@@ -1,9 +1,14 @@
-FROM node:lts AS build
+FROM node:20 AS build
+
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
 COPY . .
-RUN npm run build
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+COPY . .
+RUN pnpm run build
 
 FROM nginx:alpine AS runtime
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
