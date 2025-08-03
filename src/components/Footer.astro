@@ -5,14 +5,7 @@ import dayjs from "dayjs";
 const result = execSync('git log -1 --pretty="format:%cI"');
 const lastModified = dayjs(result.toString()).format('YYYY/MM/DD');
 ---
-<footer class="text-center font-bold bg-sky-200">
-  © 2025 woodnx.com | Powered by Astro<br>
-  
-  Last modified: {lastModified}
+<footer class="flex flex-col font-bold">
+  <span class="self-center">© 2025 woodnx.com | Powered by Astro</span>
+  <span class="self-center">Last modified: {lastModified}</span>
 </footer>
-
-<style>
-  footer {
-    flex-shrink: 0;
-  }
-</style>
