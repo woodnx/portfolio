@@ -9,9 +9,9 @@ const { title, class: className } = Astro.props;
 <section class:list={[className]}>
   {title && 
     <h1 class="text-sky-600">{title}</h1>
-    <hr class="h-1.5 border-t-0 bg-sky-600 rounded-t-full" />
+    <hr class="h-1.5 border-t-0 bg-sky-600 rounded-t-2xl" />
   }
-  <div class="p-4 rounded-b-md bg-white">
+  <div class="p-4 rounded-b-2xl bg-white/70 backdrop-blur-sm">
     <slot />
   </div>
 </section>
