@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, passthroughImageService } from 'astro/config';
 
 // 3rd-party plugin
 import icon from 'astro-icon';
@@ -12,6 +12,9 @@ import { remarkModifiedTime } from './src/scripts/remark-modified-time.mjs';
 
 // https://astro.build/config
 export default defineConfig({
+  image: {
+    service: passthroughImageService(),
+  },
   integrations: [
     icon(), 
     expressiveCode({
