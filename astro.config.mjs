@@ -10,24 +10,23 @@ import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 // user defined plugin
 import { remarkModifiedTime } from './src/scripts/remark-modified-time.mjs';
 
+import mdx from '@astrojs/mdx';
+
 // https://astro.build/config
 export default defineConfig({
   image: {
     service: passthroughImageService(),
   },
-  integrations: [
-    icon(), 
-    expressiveCode({
-      plugins: [
-        pluginLineNumbers(),
-      ],
-      styleOverrides: {
-        frames: {
-          shadowColor: '#FFF',
-        },
+  integrations: [icon(), expressiveCode({
+    plugins: [
+      pluginLineNumbers(),
+    ],
+    styleOverrides: {
+      frames: {
+        shadowColor: '#FFF',
       },
-    }),
-  ],
+    },
+  }), mdx()],
 
   vite: {
     plugins: [tailwindcss()]

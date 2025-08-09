@@ -1,0 +1,79 @@
+---
+title: iQbe
+description: クイズ学習支援Webアプリ
+publishedAt: 2025-03-31
+developedStart: 2021-11-25
+tags: [react, express, docker, nodejs, nginx]
+category: Web
+pinned: true
+image: http://img.youtube.com/vi/QPPMq7Vjc-4/0.jpg
+alt: iQbeの画像
+---
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe 
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+    src="https://www.youtube.com/embed/QPPMq7Vjc-4" 
+    title="iQbe demo" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen></iframe>
+</div>
+
+# 概要
+競技クイズの学習を強化、支援するためのWebアプリ。
+
+## 目的
+ただ単なる単語帳ライクのアプリではなく、「クイズを楽しく効果的に学べる」ことを目的とした。
+
+## 機能
+
+- インプット
+  - ジャンルやキーワードによる柔軟な検索機能
+  - 問題のシャッフルや「解答を隠す」といった学習に役立つ機能
+  - 1問ごとの作問
+  - CSVファイルのインポート
+
+- アウトプット
+  - 実際のクイズシーンを想定した演習
+
+- 分析
+  - どのくらい学習できたか確認できる
+  - 間違えた問題の復習
+
+- コミュニティ
+  - 同じサークル内のユーザーとランキングで学習状況を比較
+
+# 技術スタック
+このWebアプリは、以下のライブラリ・フレームワークを用いて開発している。
+
+- **フロントエンド**: React, Vite
+  - UIライブラリ: Mantine
+  - ルーティングライブラリ: React Router (v7)
+- **バックエンド**: Express
+
+# 開発経緯
+## 2021～2022 ExcelファイルのDB管理化から研究へ
+2021年秋、クイズ研究会に所属していた私は、友人からある提案をされた。
+それは、会で管理しているExcelファイルをデータベース化してほしいというものであった。
+
+ちょうど、高専でデータベースの授業があり、またその年の夏に高専プロコンでWebアプリを開発していたので、腕試しだということでやってみることにした。
+さらに私は、単なるDB化だけでなく、クイズを用いた簡単な演習機能も追加したいと考えた。
+2021年の11月ごろから開発を開始し、編入試験による中断を挟みながら2022年の年末に完成した。
+このときの構成はNuxt2を用いていた。
+
+このプロジェクトは結局「競技クイズを念頭においたクイズ学習支援システムの開発」という題で卒業研究となった。
+
+## 2023～ 内部機構の改善
+高専を卒業した2023年春から、このアプリをより開発しやすくするための施策を実施してきた。
+
+- フロントエンドの刷新 (Vue2 → React)
+- モノレポ化 (バックエンドとフロントエンドのリポジトリ統合)
+- ログイン機構の内製化
+- デプロイ手法を簡略化
+- スキーマ駆動開発 (OpenAPI) の導入
+- ドメイン駆動設計の導入
+- DevContainer の導入
+
+今後は、さらなる機能の追加のために開発を継続している。
