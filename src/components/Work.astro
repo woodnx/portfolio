@@ -15,7 +15,7 @@ const { title, description, image, id, tags = [] } = Astro.props;
 <div class="border-4 border-sky-200 md:border-transparent hover:border-sky-200 rounded-2xl">
   <a href={`/works/${id}`}>
     <figure>
-      <Image src={image} alt="" class="rounded-t-xl object-cover h-30" />
+      <Image src={image} alt="" inferSize class="rounded-t-xl object-cover h-30" />
     </figure>
   </a>
   <div class="p-3 pt-2">
