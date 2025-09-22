@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets";
+import profileImg from "../images/profile.png";
+import Social from "@/components/Social.astro";
+import Description from "./Description.astro";
+
+interface Props {
+  class?: string;
+}
+
+// プロフィール情報はここで定義
+const name = "woodnx";
+
+const { class: className } = Astro.props;
+---
+
+<aside
+  class:list={[
+    "p-4 bg-white rounded-2xl flex flex-col gap-2 items-center self-start",
+    className,
+  ]}
+>
+  <div class="w-42">
+    <Image
+      src={profileImg}
+      alt="プロフィール画像"
+      class="rounded-full w-42 border-5 border-sky-200 justify-self-center"
+    />
+    <div class="relative bottom-10 -mb-10 flex justify-between">
+      <Social
+        platform="x"
+        username="woodnx_"
+        icon="tabler:brand-twitter-filled"
+      />
+      <Social platform="github" username="woodnx" />
+    </div>
+  </div>
+
+  <h2 class="text-xl font-bold">{name}</h2>
+  <hr class="w-30 h-0.5 border-3 mb-3 rounded-full text-sky-200" />
+
+  <Description vertical label="専門" description="情報工学 / 情報科学" />
+  <Description
+    vertical
+    label="趣味"
+    description="個人開発💻️、音楽・アニメ・映画鑑賞🎥、ゲーム🎮️"
+  />
+  <Description
+    vertical
+    label="好きなこと"
+    description="何かをつくること、飲み会🍻、カラオケ🎤"
+  />
+  <Description vertical label="持病" description="1型糖尿病" />
+</aside>

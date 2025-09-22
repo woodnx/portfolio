@@ -1,12 +1,22 @@
 ---
 interface Props {
-  label: string
-  description: string
+  label: string;
+  description: string;
+  vertical?: boolean;
 }
 
-const { label, description } = Astro.props
+const { label, description, vertical } = Astro.props;
+
+const direction = vertical ? "flex-col w-full" : "flex-row items-center";
 ---
-<div class="flex gap-x-2 items-center text-lg">
-  <p class="flex-none px-2 py-1 rounded-full min-w-20 font-bold bg-sky-600 text-white text-center text-sm md:min-w-30 md:text-base">{label}</p>
-  <p class="flex-1">{description}</p>
+
+<div class:list={["flex gap-x-2 text-lg", direction]}>
+  <p
+    class:list={[
+      "flex-none min-w-20 md:min-w-30 px-2 py-1 rounded-full font-bold bg-sky-600 text-white text-center text-sm md:text-base",
+    ]}
+  >
+    {label}
+  </p>
+  <p class="flex-1 self-center">{description}</p>
 </div>

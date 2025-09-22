@@ -1,77 +1,45 @@
 ---
-import '@/styles/global.css';
-import Header from '@/components/Header.astro';
-import Footer from '@/components/Footer.astro';
+import "@/styles/global.css";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import ProfileCard from "@/components/ProfileCard.astro";
 
 interface Props {
-  pageTitle: string
-  headerTitle?: string
+  pageTitle: string;
+  headerTitle?: string;
 }
 
 const { pageTitle, headerTitle = "@woodnx.com" } = Astro.props;
 ---
-<html lang="ja" class="bg-gradient-to-br from-blue-100 via-sky-100 to-gray-100">
+
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/jpeg" href="/profile.png" />
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/gh/airreader/github-code-embedder@v0/dist/index.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/airreader/github-code-embedder@v0/dist/index.js"
+    ></script>
     <title>{pageTitle} | @woodnx.com</title>
   </head>
-  <body data-pagedind-ignore>
-    <div class="absolute z-[-1]">
-      <div class="fixed rounded-e-full bg-green-400/40 green">
+  <body data-pagedind-ignore class="mx-auto max-w-6xl">
+    <div class="grid grid-cols-7 gap-4 min-h-screen grid-rows-[auto_1fr_auto]">
+      <Header class="col-span-full mt-4" title={headerTitle} />
+
+      <ProfileCard class="col-span-2" />
+      <div class="col-span-5">
+        <slot />
       </div>
-      <div class="fixed rounded-full bg-red-400/40 red">
-      </div>
-      <div class="fixed rounded-lg bg-yellow-400/40 yellow">
-      </div>
+
+      <Footer class="col-span-full" />
     </div>
-    <Header title={headerTitle}>
-      <slot name="header" />
-    </Header>
-    <main class="main p-4">
-      <slot/>
-    </main>
-    <Footer />
   </body>
 </html>
-
-<style>
-  .main {
-    flex: 1 0 auto;
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .green {
-    left: -15vmin;
-    bottom: 0vmin;
-
-    width: 50vmin;
-    height: 20vmin;
-  }
-
-  .red {
-    top: -30vmin;
-    right: -30vmin;
-    width: 60vmin;
-    height: 60vmin;
-  }
-  
-  .yellow {
-    bottom: -10vmin;
-    right: 5vmin;
-
-    width: 30vmin;
-    height: 30vmin;
-
-
-    transform: rotate(35deg);
-    transform-origin: bottom right;
-  }
-</style>

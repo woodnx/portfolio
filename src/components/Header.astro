@@ -2,18 +2,13 @@
 import Navigation from "./Navigation.astro";
 
 interface Props {
+  class?: string
   title?: string
 }
 
-const { title = "" } = Astro.props;
+const { class: className, title = "@woodnx.com" } = Astro.props;
 ---
-<header class="p-2">
-  <div class="text-center text-sky-600  font-bold text-4xl mb-3">
-    {title}
-    <slot />
-  </div>
-
-  <nav>
-    <Navigation />
-  </nav>
+<header class:list={["flex justify-between items-baseline px-10 pt-4 pb-5 bg-white rounded-full", className]}>
+  <p class="text-sky-600 font-bold text-xl">{title}</p>  
+  <Navigation />
 </header>
