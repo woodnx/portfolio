@@ -3,15 +3,21 @@ import { execSync } from "child_process";
 import dayjs from "dayjs";
 
 interface Props {
-  class?: string
+  class?: string;
 }
 
 const result = execSync('git log -1 --pretty="format:%cI"');
-const lastModified = dayjs(result.toString()).format('YYYY/MM/DD');
+const lastModified = dayjs(result.toString()).format("YYYY/MM/DD");
 
 const { class: className } = Astro.props;
 ---
-<footer class:list={["flex justify-between px-6 py-2 bg-white rounded-t-2xl", className]}>
+
+<footer
+  class:list={[
+    "flex justify-between px-8 py-4 bg-white rounded-full",
+    className,
+  ]}
+>
   <span>Powered by Astro</span>
   <span>© 2025 woodnx.com</span>
   <span>Last modified: {lastModified}</span>
