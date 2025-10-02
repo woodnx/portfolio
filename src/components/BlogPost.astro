@@ -1,69 +1,78 @@
 ---
-import Badge from './Badge.astro';
-import dayjs from 'dayjs';
-import Twemoji from './Twemoji.astro';
-import { Icon } from 'astro-icon/components';
+import Badge from "./Badge.astro";
+import dayjs from "dayjs";
+import Twemoji from "./Twemoji.astro";
+import { Icon } from "astro-icon/components";
 
 interface Props {
-  title: string
-  id: string
-  publishedAt: Date | string
-  category: string
-  tags?: string[]
-  entry: string
-  icon?: string
+  title: string;
+  id: string;
+  publishedAt: Date | string;
+  category: string;
+  tags?: string[];
+  entry: string;
+  icon?: string;
 }
 
-const { title, publishedAt, id, category, tags = [], entry, icon: _icon } = Astro.props;
+const {
+  title,
+  publishedAt,
+  id,
+  category,
+  tags = [],
+  entry,
+  icon: _icon,
+} = Astro.props;
 
 const published = dayjs(publishedAt).format("YYYY/MM/DD");
 
-const icon = _icon || (
-  category == 'Life' ? '☕️' :
-  category == 'Tech' ? '⚒️' :
-  '🗒️'
-)
+const icon =
+  _icon || (category == "Life" ? "☕️" : category == "Tech" ? "⚒️" : "🗒️");
 ---
+
 <div
-  class="flex items-center gap-6 md:px-6 md:py-2 rounded-2xl border-4 border-transparent hover:border-sky-200 overflow-hidden" 
+  class="flex items-center gap-6 p-6 rounded-tr-4xl rounded-bl-4xl rounded-tl-lg rounded-br-lg bg-white"
 >
-  <a 
-    class="justify-self-center"
-    href={`/posts/${id}`}
-    style="cursor:pointer" 
-  >
-    <Twemoji icon={icon}/>
+  <a class="justify-self-center" href={`/posts/${id}`} style="cursor:pointer">
+    <Twemoji icon={icon} />
   </a>
   <div class="flex flex-col">
-    <a 
-      class="flex flex-col"
-      href={`/posts/${id}`}
-      style="cursor:pointer" 
-    >
-      <p class="font-bold md:text-2xl">{title}</p>
+    <a class="flex flex-col group" href={`/posts/${id}`} style="cursor:pointer">
+      <p
+        class="flex flex-row gap-2 items-center font-bold md:text-2xl group-hover:text-sky-600"
+      >
+        {title}
+        <svg
+          class="chevron opacity-0 transform -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0"
+          width="1rem"
+          height="1rem"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 320 512"
+          ><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+          <path
+            d="M311.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L243.2 256 73.9 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
+          ></path></svg
+        >
+      </p>
       <p class="flex-items mb-1 entry-text">
         {entry}
       </p>
     </a>
     <div class="flex flex-wrap gap-x-3 gap-y-0.5">
-      <p class="flex items-center gap-1 text-sm">
+      <p class="flex gap-1 items-center">
         <Icon name="tabler:calendar-week" />
         {published}
       </p>
       <div class="w-[100%] md:hidden"></div>
-      <Badge 
-        label={category} 
-        link={`/categories/${category}`} 
-        icon='tabler:category' 
+      <Badge
+        label={category}
+        link={`/categories/${category}`}
+        icon="tabler:category"
       />
       {
-        tags?.map((tag) => 
-          <Badge 
-            label={tag} 
-            link={`/tags/${tag}`} 
-            icon='tabler:tag'
-          />
-        )
+        tags?.map((tag) => (
+          <Badge label={tag} link={`/tags/${tag}`} icon="tabler:tag" />
+        ))
       }
     </div>
   </div>
@@ -72,6 +81,10 @@ const icon = _icon || (
 <style>
   .entry-text {
     display: none;
+  }
+
+  .chevron {
+    fill: var(--color-sky-600);
   }
 
   @media (min-width: 768px) {
