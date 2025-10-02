@@ -34,6 +34,21 @@ const pageTitle = "woodnx";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
+  <Section title="Profile">
+    <div
+      class="flex flex-col md:flex-row gap-x-8 gap-y-4 items-center justify-items-center"
+    >
+      <div class="flex flex-col gap-2 mt-2">
+        <Description label="出身" description="鳥取県" />
+        <Description
+          label="所属"
+          description="東京都立大学大学院 システムデザイン研究科 情報科学域 修士課程1年"
+        />
+        <Description label="研究領域" description="音響信号処理" />
+      </div>
+    </div>
+  </Section>
+
   <Section title="Skills">
     <h2 class="text-sky-600">Languages</h2>
     <div
