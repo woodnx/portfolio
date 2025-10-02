@@ -35,71 +35,74 @@ const pageTitle = "woodnx";
 
 <BaseLayout pageTitle={pageTitle}>
   <Section title="Profile">
-    <div
-      class="flex flex-col md:flex-row gap-x-8 gap-y-4 items-center justify-items-center"
-    >
-      <div class="flex flex-col gap-2 mt-2">
-        <Description label="出身" description="鳥取県" />
-        <Description
-          label="所属"
-          description="東京都立大学大学院 システムデザイン研究科 情報科学域 修士課程1年"
-        />
-        <Description label="研究領域" description="音響信号処理" />
-      </div>
+    <div class="flex flex-col gap-2 justify-center">
+      <Description label="出身" description="鳥取県" />
+      <Description
+        label="所属"
+        description="東京都立大学大学院 システムデザイン研究科 情報科学域 修士課程1年"
+      />
+      <Description label="研究領域" description="音響信号処理" />
     </div>
   </Section>
 
   <Section title="Skills">
-    <h2 class="text-sky-600">Languages</h2>
-    <div
-      class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-6 gap-x-8 gap-y-4 mt-2"
-    >
-      <Skill label="TypeScript" rate={4} />
-      <Skill label="Python" rate={4} />
-      <Skill label="Ruby" rate={2} />
-      <Skill label="HTML" icon="devicon:html5" rate={3} />
-      <Skill label="CSS" icon="devicon:css3" rate={3} />
-      <Skill label="C" rate={3} />
-      <Skill label="C++" icon="devicon:cplusplus" rate={3} />
-      <Skill label="C#" icon="devicon:csharp" rate={2} />
-      <Skill label="Go" icon="devicon:go-wordmark" rate={3} />
-      <Skill label="LaTeX" rate={3} />
-    </div>
-
-    <h2 class="text-sky-600 mt-5">Libraries & Frameworks</h2>
-    <div
-      class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-6 gap-x-8 gap-y-4 mt-2"
-    >
-      <Skill label="React" rate={4} />
-      <Skill label="Vue.js" icon="devicon:vuejs" rate={3} />
-      <Skill label="Astro" rate={4} />
-      <Skill label="Next.js" icon="devicon:nextjs" rate={1} />
-      <Skill label="Ruby on Rails" icon="devicon:rails-wordmark" rate={2} />
-      <Skill label="Unity" rate={3} />
-    </div>
-
-    <h2 class="text-sky-600 mt-5">Infra</h2>
-    <div
-      class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-6 gap-x-8 gap-y-4 mt-2"
-    >
-      <Skill label="MariaDB" rate={4} />
-      <Skill label="PostgreSQL" rate={2} />
-      <Skill label="Docker" rate={2} />
-      <Skill label="Apache" rate={2} />
-      <Skill label="nginx" rate={2} />
-    </div>
-
-    <h2 class="text-sky-600 mt-5">Envionments & Tools</h2>
-    <div
-      class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-6 gap-x-8 gap-y-4 mt-2"
-    >
-      <Skill label="VScode" rate={4} />
-      <Skill label="Vim" rate={3} />
-      <Skill label="Git" rate={4} />
-      <Skill label="GitHub" rate={4} />
-      <Skill label="Debian" rate={3} />
-      <Skill label="Inkscape" rate={4} />
-      <Skill label="Blender" rate={2} />
+    <div class="flex flex-col gap-4">
+      <div>
+        <h2 class="text-sky-600">Languages</h2>
+        <div
+          class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-6 gap-x-8 gap-y-4"
+        >
+          <Skill label="TypeScript" rate={4} />
+          <Skill label="Python" rate={4} />
+          <Skill label="Ruby" rate={2} />
+          <Skill label="HTML" icon="devicon:html5" rate={3} />
+          <Skill label="CSS" icon="devicon:css3" rate={3} />
+          <Skill label="C" rate={3} />
+          <Skill label="C++" icon="devicon:cplusplus" rate={3} />
+          <Skill label="C#" icon="devicon:csharp" rate={2} />
+          <Skill label="Go" icon="devicon:go-wordmark" rate={3} />
+          <Skill label="LaTeX" rate={3} />
+        </div>
+      </div>
+      <div>
+        <h2 class="text-sky-600">Libraries & Frameworks</h2>
+        <div
+          class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-6 gap-x-8 gap-y-4"
+        >
+          <Skill label="React" rate={4} />
+          <Skill label="Vue.js" icon="devicon:vuejs" rate={3} />
+          <Skill label="Astro" rate={4} />
+          <Skill label="Next.js" icon="devicon:nextjs" rate={1} />
+          <Skill label="Ruby on Rails" icon="devicon:rails-wordmark" rate={2} />
+          <Skill label="Unity" rate={3} />
+        </div>
+      </div>
+      <div>
+        <h2 class="text-sky-600">Infra</h2>
+        <div
+          class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-6 gap-x-8 gap-y-4"
+        >
+          <Skill label="MariaDB" rate={4} />
+          <Skill label="PostgreSQL" rate={2} />
+          <Skill label="Docker" rate={2} />
+          <Skill label="Apache" rate={2} />
+          <Skill label="nginx" rate={2} />
+        </div>
+      </div>
+      <div>
+        <h2 class="text-sky-600">Envionments & Tools</h2>
+        <div
+          class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-6 gap-x-8 gap-y-4"
+        >
+          <Skill label="VScode" rate={4} />
+          <Skill label="Vim" rate={3} />
+          <Skill label="Git" rate={4} />
+          <Skill label="GitHub" rate={4} />
+          <Skill label="Debian" rate={3} />
+          <Skill label="Inkscape" rate={4} />
+          <Skill label="Blender" rate={2} />
+        </div>
+      </div>
     </div>
   </Section>
 
