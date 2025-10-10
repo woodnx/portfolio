@@ -1,27 +1,32 @@
 ---
-import { Icon } from 'astro-icon/components'
-import Rating from './Rating.astro'
+import { Icon } from "astro-icon/components";
+import Rating from "./Rating.astro";
 
 interface Props {
-  label: string
-  rate: number
-  icon?: string
+  label: string;
+  rate: number;
+  icon?: string;
 }
 
-const { label, rate, icon } = Astro.props
+const { label, rate, icon } = Astro.props;
 
-const message = 
-    (rate == 5) ? 'ライブラリ等で貢献した'
-  : (rate == 4) ? '何かしらの成果物を作った'
-  : (rate == 3) ? '初学者に教えられるくらい'
-  : (rate == 2) ? '使い方や文法を理解している' 
-  : 'Hello, World!';
+const message =
+  rate == 5
+    ? "ライブラリ等で貢献した"
+    : rate == 4
+      ? "何かしらの成果物を作った"
+      : rate == 3
+        ? "初学者に教えられるくらい"
+        : rate == 2
+          ? "使い方や文法を理解している"
+          : "Hello, World!";
 ---
+
 <div class="tooltip tooltip-bottom flex flex-col items-center">
   <div class="tooltip-content">
     <p>{message}</p>
   </div>
   <Icon name={icon || `devicon:${label.toLowerCase()}`} size={50} />
   <p>{label}</p>
-  <Rating rate={rate}/>
+  <Rating rate={rate} />
 </div>
