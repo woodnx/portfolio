@@ -31,15 +31,17 @@ const { pageTitle, headerTitle = "@woodnx.com" } = Astro.props;
     <title>{pageTitle} | @woodnx.com</title>
   </head>
   <body data-pagedind-ignore class="mx-auto max-w-6xl">
-    <div class="grid grid-cols-7 gap-4 min-h-screen grid-rows-[auto_1fr_auto]">
-      <Header class="col-span-full mt-4" title={headerTitle} />
+    <div class="flex flex-col min-h-screen gap-4">
+      <Header class="flex-shrink-0" title={headerTitle} />
 
-      <ProfileCard class="col-span-2" />
-      <div class="col-span-5">
-        <slot />
+      <div class="flex-1 grid grid-cols-1 lg:grid-cols-7 gap-y-4 lg:gap-x-4">
+        <ProfileCard class="col-span-2 order-2 lg:order-1" />
+        <main class="col-span-5 order-1 lg:order-2">
+          <slot />
+        </main>
       </div>
 
-      <Footer class="col-span-full mb-4" />
+      <Footer class="flex-shrink-0 lg:mb-4" />
     </div>
   </body>
 </html>

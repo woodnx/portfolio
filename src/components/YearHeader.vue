@@ -8,7 +8,7 @@ defineProps<{
   <div class="flex items-center gap-4 mb-4">
     <!-- 年の表示 -->
     <div class="flex-shrink-0 w-16 text-right">
-      <div class="text-xl font-bold text-sky-600">{{ year }}</div>
+      <div class="text-md lg:text-xl font-bold text-sky-600">{{ year }}</div>
     </div>
 
     <!-- 丸 -->

@@ -54,11 +54,13 @@ const itemsByYear = computed(() => {
 </script>
 
 <template>
-  <div class="flex gap-2 justify-center mb-6">
+  <div
+    class="flex gap-2 justify-start lg:justify-center mb-6 overflow-x-auto w-full px-4 scrollbar-hide"
+  >
     <button
       v-for="category in categories"
       :key="category"
-      class="px-3 py-1 rounded-full border transition font-bold"
+      class="px-3 py-1 rounded-full border transition font-bold whitespace-nowrap flex-shrink-0"
       :class="
         activeCategory === category
           ? 'bg-sky-600 text-white border-sky-600'
