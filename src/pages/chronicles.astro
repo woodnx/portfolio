@@ -1,0 +1,13 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Chronicle from "@/components/Chronicle.vue";
+import { getCollection } from "astro:content";
+
+const chronicles = await getCollection("chronicle");
+
+const pageTitle = "Chronicles";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <Chronicle items={chronicles.map((c) => c.data)} client:load />
+</BaseLayout>

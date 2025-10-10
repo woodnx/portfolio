@@ -2,12 +2,22 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
-    "strictNullChecks": true, // add if using `base` template
-    "allowJs": true // required, and included with all Astro templates
+    "ignoreDeprecations": "6.0",
+    "strictNullChecks": true,
+    "allowJs": true,
+    "jsx": "preserve",
+    "jsxImportSource": "react"
   },
   "extends": "astro/tsconfigs/base",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  "include": [
+    ".astro/types.d.ts",
+    "**/*"
+  ],
+  "exclude": [
+    "dist"
+  ]
 }

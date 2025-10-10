@@ -1,53 +1,74 @@
-import { z, defineCollection } from 'astro:content';
-import { glob } from 'astro/loaders';
-import dayjs from 'dayjs';
+import { z, defineCollection } from "astro:content";
+import { glob } from "astro/loaders";
+import dayjs from "dayjs";
 
 const postCollection = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/post" }),
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/post" }),
   schema: z.object({
     title: z.string(),
     icon: z.string().optional(),
-    publishedAt: z.string()
+    publishedAt: z
+      .string()
       .or(z.date())
-      .transform((date) => dayjs(date).format('YYYY/MM/DD')),
-    lastModified: z.string()
+      .transform((date) => dayjs(date).format("YYYY/MM/DD")),
+    lastModified: z
+      .string()
       .or(z.date())
-      .transform((date) => dayjs(date).format('YYYY/MM/DD'))
+      .transform((date) => dayjs(date).format("YYYY/MM/DD"))
       .optional(),
     series: z.string().optional(),
     category: z.string(),
     tags: z.array(z.string()).optional(),
-  })
+  }),
 });
 
 const workCollection = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/work" }),
-  schema: ({ image }) => z.object({
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/work" }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      publishedAt: z
+        .string()
+        .or(z.date())
+        .transform((date) => dayjs(date).format("YYYY/MM/DD")),
+      lastModified: z
+        .string()
+        .or(z.date())
+        .transform((date) => dayjs(date).format("YYYY/MM/DD"))
+        .optional(),
+      image: image(),
+      alt: z.string(),
+      developedStart: z
+        .string()
+        .or(z.date())
+        .transform((date) => dayjs(date).format("YYYY/MM/DD")),
+      developedEnd: z
+        .string()
+        .or(z.date())
+        .transform((date) => dayjs(date).format("YYYY/MM/DD"))
+        .optional(),
+      category: z.string(),
+      tags: z.array(z.string()).optional(),
+      pinned: z.boolean().optional(),
+    }),
+});
+
+const chronicleCollection = defineCollection({
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/chronicle",
+  }),
+  schema: z.object({
     title: z.string(),
-    description: z.string().optional(),
-    publishedAt: z.string()
-      .or(z.date())
-      .transform((date) => dayjs(date).format('YYYY/MM/DD')),
-    lastModified: z.string()
-      .or(z.date())
-      .transform((date) => dayjs(date).format('YYYY/MM/DD'))
-      .optional(),
-    image: image(),
-    alt: z.string(),
-    developedStart: z.string()
-      .or(z.date())
-      .transform((date) => dayjs(date).format('YYYY/MM/DD')),
-    developedEnd: z.string()
-      .or(z.date())
-      .transform((date) => dayjs(date).format('YYYY/MM/DD'))
-      .optional(),
+    description: z.string(),
     category: z.string(),
-    tags: z.array(z.string()).optional(),
-    pinned: z.boolean().optional(),
-  })
+    date: z.string(),
+  }),
 });
 
 export const collections = {
-  'post': postCollection,
-  'work': workCollection,
+  post: postCollection,
+  work: workCollection,
+  chronicle: chronicleCollection,
 };

@@ -12,6 +12,8 @@ import { remarkModifiedTime } from './src/scripts/remark-modified-time.mjs';
 
 import mdx from '@astrojs/mdx';
 
+import vue from '@astrojs/vue';
+
 // https://astro.build/config
 export default defineConfig({
   image: {
@@ -26,7 +28,7 @@ export default defineConfig({
         shadowColor: '#FFF',
       },
     },
-  }), mdx()],
+  }), mdx(), vue()],
 
   vite: {
     plugins: [tailwindcss()]

@@ -1,0 +1,51 @@
+---
+interface Props {
+  title: string;
+  desc: string;
+  lorr: "l" | "r";
+}
+
+const { title, desc, lorr } = Astro.props;
+---
+
+<div class={`mb-8 flex ${lorr == "l" ? "md:justify-start" : "md:justify-end"}`}>
+  <div
+    class={`timeline-item opacity-0 relative md:w-1/2 
+          ${lorr == "l" ? "md:pr-8 w-full pl-6" : "md:pl-8 w-full pr-6"}`}
+    data-anim={lorr == "l" ? "fade-in-left" : "fade-in-right"}
+  >
+    <!-- 丸 -->
+    <div
+      class={`absolute top-2 w-6 h-6 rounded-full border-4 border-white bg-sky-600
+          ${lorr == "l" ? "right-[-13px]" : "left-[-10px]"}`}
+    >
+    </div>
+    <!-- コンテンツ -->
+    <div
+      class="bg-white p-4 rounded-tr-4xl rounded-bl-4xl rounded-tl-lg rounded-br-lg"
+    >
+      <h3 class="font-semibold text-lg text-sky-600">{title}</h3>
+      <p class="text-neutral-600">{desc}</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const items = document.querySelectorAll(".timeline-item");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const anim = entry.target.getAttribute("data-anim");
+          entry.target.classList.add("animate-" + anim);
+          entry.target.classList.remove("opacity-0");
+          // 1回だけ再生して終わり
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 },
+  );
+
+  items.forEach((item) => observer.observe(item));
+</script>

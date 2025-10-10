@@ -2,10 +2,23 @@
 import { execSync } from "child_process";
 import dayjs from "dayjs";
 
+interface Props {
+  class?: string;
+}
+
 const result = execSync('git log -1 --pretty="format:%cI"');
-const lastModified = dayjs(result.toString()).format('YYYY/MM/DD');
+const lastModified = dayjs(result.toString()).format("YYYY/MM/DD");
+
+const { class: className } = Astro.props;
 ---
-<footer class="flex flex-col font-bold">
-  <span class="self-center">© 2025 woodnx.com | Powered by Astro</span>
-  <span class="self-center">Last modified: {lastModified}</span>
+
+<footer
+  class:list={[
+    "flex justify-between px-8 py-4 bg-white flex-col items-center rounded-t-4xl lg:flex-row lg:rounded-full h-auto min-h-16 text-sm",
+    className,
+  ]}
+>
+  <span>Powered by Astro</span>
+  <span>© 2025 woodnx.com</span>
+  <span>Last modified: {lastModified}</span>
 </footer>

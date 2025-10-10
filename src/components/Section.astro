@@ -1,17 +1,21 @@
 ---
 interface Props {
-  title?: string
-  class?: string
+  title?: string;
+  class?: string;
 }
 
 const { title, class: className } = Astro.props;
 ---
+
 <section class:list={[className]}>
-  {title && 
-    <h1 class="text-sky-600">{title}</h1>
-    <hr class="h-1.5 border-t-0 bg-sky-600 rounded-t-2xl" />
+  {
+    title && (
+      <h1 class="text-sky-600 after:absolute after:bottom-0 after:left-0 after:w-full after:h-2 after:rounded-tl-lg after:rounded-tr-4xl after:bg-sky-600">
+        {title}
+      </h1>
+    )
   }
-  <div class="p-4 rounded-b-2xl bg-white/70 backdrop-blur-sm">
+  <div class="p-4 bg-white rounded-bl-4xl rounded-br-lg">
     <slot />
   </div>
 </section>
