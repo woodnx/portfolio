@@ -1,0 +1,119 @@
+- title: 『プチコンMkII』を購入
+  description: はじめてのプログラミング
+  category: サブカル
+  date: 2012-4
+
+- title: 『スプラトゥーン』にハマる
+  category: サブカル
+  date: 2015-5
+
+- title: 『プチコン3号』を購入
+  description: 本格的なプログラミングを開始
+  category: サブカル
+  date: 2016-1
+
+- title: 『シン・ゴジラ』にハマる
+  category: サブカル
+  date: 2016-7
+
+- title: 『君の名は。』とRADWIMPSにハマる
+  category: サブカル
+  date: 2016-10
+
+- title: 『ゼルダの伝説 ブレスオブザワイルド』にハマる
+  category: サブカル
+  date: 2017-3
+
+- title: 『NEW GAME』にハマる
+  category: サブカル
+  date: 2017-9
+
+- title: 『ガールズ&パンツァー』にハマる
+  category: サブカル
+  date: 2017-12
+
+- title: 松江高専に入学
+  description: 本格的に情報工学やプログラミングについて学びたいと思い、高専に進学。
+  category: 学生生活
+  date: 2018-4
+
+- title: はじめてのゲーム制作
+  description: DxLib を使って隕石を撃ち落とすゲームを作成。
+  category: 個人開発
+  date: 2019-3
+
+- title: 高専祭・前夜祭の学級劇
+  description: 『名探偵コナン』をもとに、オリジナルのトリックを作成した。監督・脚本・演出を担当。
+  category: 学生生活
+  date: 2019-10
+
+- title: はじめての Unity & Blender でのゲーム開発
+  description: Unity を使って、見下ろし型シューティングゲームを開発。
+  category: 個人開発
+  date: 2020-3
+
+- title: エヴァンゲリオン新劇場版にハマる
+  category: サブカル
+  date: 2020-11
+
+- title: テトリスを作成
+  description: DxLib を使って、テトリスのガイドラインに準拠するように開発。
+  category: 個人開発
+  date: 2021-6
+
+- title: 高専プロコン 自由部門に参加
+  description: 勉強のモチベーションを挙げるシステムを開発。サブメンバーとして開発に参加し、Webアプリ周りを担当。
+  category: 学生生活
+  date: 2021-10
+
+- title: 松江水灯籠の灯籠制作に参加
+  description: 人が近づいたら音楽を鳴らす灯籠を制作。音を鳴らすC++プログラム周りを担当。
+  category: 学生生活
+  date: 2021-11
+
+- title: 『iQbe』開発開始
+  category: 個人開発
+  date: 2021-12
+
+- title: 高専での研究内容を発表
+  category: 研究活動
+  date: 2023-2
+
+- title: 東京都立大学に編入学
+  description: 3年間、テーマを一貫した研究をやりたくて、院進を前提とした編入学を目指した。
+  category: 学生生活
+  date: 2023-4
+
+- title: はじめてのチームでのゲーム開発
+  category: 個人開発
+  date: 2023-11
+
+- title: 東京都立大学 小野研究室に配属
+  description: なにかユニークな研究がしたくて、音に関する研究室を志望
+  category: 研究
+  date: 2024-4
+
+- title: 大学での研究成果を日本音響学会 春季研究発表会で発表
+  category: 研究活動
+  date: 2025-3-21
+
+- title: ポートフォリオの作成
+  category: 個人開発
+  date: 2025-3-30
+
+- title: 東京都立大学大学院に進学
+  description: 研究をさらに進めるため、大学院に進学。
+  category: 学生生活
+  date: 2025-4
+
+- title: Cygamesへ5daysインターン
+  category: 職歴
+  date: 2025-8
+
+- title: APSIPA ASC 2025 にて研究発表
+  category: 研究活動
+  date: 2025-10
+
+- title: ASA/ASJ Joint Meeting にて研究発表
+  category: 研究活動
+  date: 2025-12

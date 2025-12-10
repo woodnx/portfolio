@@ -2,14 +2,10 @@
 import { computed, ref } from "vue";
 import Timeline from "./Timeline.vue";
 import dayjs from "dayjs";
+import type { Chronicle } from "@/data/chronicles";
 
 const props = defineProps<{
-  items: {
-    title: string;
-    description: string;
-    category: string;
-    date: string;
-  }[];
+  items: Chronicle[];
 }>();
 
 const activeCategory = ref("すべて");

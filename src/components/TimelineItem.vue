@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 defineProps<{
   category: string;
   title: string;
-  description: string;
+  description?: string;
   date: string;
 }>();
 </script>
@@ -26,7 +26,7 @@ defineProps<{
 
     <!-- コンテンツ -->
     <div class="flex-1 pb-2">
-      <div v-if="description.length != 0">
+      <div v-if="description && description.length != 0">
         <div
           class="bg-white p-4 rounded-tr-4xl rounded-bl-4xl rounded-tl-lg rounded-br-lg"
         >
