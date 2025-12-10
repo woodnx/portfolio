@@ -22,7 +22,7 @@ function isChronicle(obj: any): obj is Chronicle {
   );
 }
 
-const loaded = yaml.safeLoad(raw);
+const loaded = yaml.load(raw);
 if (!Array.isArray(loaded) || !loaded.every(isChronicle)) {
   throw new Error("Invalid chronicles data structure");
 }
