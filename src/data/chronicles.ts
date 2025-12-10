@@ -9,4 +9,21 @@ export interface Chronicle {
   relation?: string[];
 }
 
-export const chronicles = yaml.load(raw) as Chronicle[];
+function isChronicle(obj: any): obj is Chronicle {
+  return (
+    typeof obj === "object" &&
+    typeof obj.title === "string" &&
+    typeof obj.category === "string" &&
+    typeof obj.date === "string" &&
+    (obj.description === undefined || typeof obj.description === "string") &&
+    (obj.relation === undefined ||
+      (Array.isArray(obj.relation) &&
+        obj.relation.every((r: any) => typeof r === "string")))
+  );
+}
+
+const loaded = yaml.safeLoad(raw);
+if (!Array.isArray(loaded) || !loaded.every(isChronicle)) {
+  throw new Error("Invalid chronicles data structure");
+}
+export const chronicles = loaded as Chronicle[];
