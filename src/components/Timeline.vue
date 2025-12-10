@@ -3,14 +3,10 @@ import { ref, onMounted, nextTick } from "vue";
 import TimelineItem from "./TimelineItem.vue";
 import YearHeader from "./YearHeader.vue";
 import dayjs from "dayjs";
+import type { Chronicle } from "@/data/chronicles";
 
 defineProps<{
-  items: {
-    category: string;
-    title: string;
-    description: string;
-    date: string;
-  }[];
+  items: Chronicle[];
   year: number;
 }>();
 
