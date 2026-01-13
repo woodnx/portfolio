@@ -11,13 +11,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.12",
-    "@astrojs/vue": "^5.1.3",
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/vue": "^5.1.4",
     "@expressive-code/plugin-line-numbers": "^0.41.3",
     "@fontsource/m-plus-rounded-1c": "^5.2.9",
     "@pagefind/default-ui": "^1.4.0",
     "@tailwindcss/vite": "^4.1.17",
-    "astro": "^5.16.4",
+    "astro": "^5.16.9",
     "astro-expressive-code": "^0.41.3",
     "astro-icon": "^1.1.5",
     "daisyui": "^5.5.11",
@@ -40,6 +40,7 @@
     "textlint": "^15.5.0",
     "textlint-rule-preset-ja-technical-writing": "^12.0.2",
     "textlint-rule-prh": "^6.1.0",
-    "tsx": "^4.21.0"
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   }
 }
