@@ -54,21 +54,7 @@ const workCollection = defineCollection({
     }),
 });
 
-const chronicleCollection = defineCollection({
-  loader: glob({
-    pattern: "**/[^_]*.{md,mdx}",
-    base: "./src/content/chronicle",
-  }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    category: z.string(),
-    date: z.string(),
-  }),
-});
-
 export const collections = {
   post: postCollection,
   work: workCollection,
-  chronicle: chronicleCollection,
 };
