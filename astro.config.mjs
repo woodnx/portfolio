@@ -6,6 +6,10 @@ import icon from 'astro-icon';
 import tailwindcss from '@tailwindcss/vite';
 import expressiveCode from 'astro-expressive-code';
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
+import remarkLinkCard from 'remark-link-card';
+import { remarkAlert } from 'remark-github-blockquote-alert';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 // user defined plugin
 import { remarkModifiedTime } from './src/scripts/remark-modified-time.mjs';
@@ -19,16 +23,28 @@ export default defineConfig({
   image: {
     service: passthroughImageService(),
   },
-  integrations: [icon(), expressiveCode({
-    plugins: [
-      pluginLineNumbers(),
-    ],
-    styleOverrides: {
-      frames: {
-        shadowColor: '#FFF',
+  integrations: [
+    icon(), 
+    expressiveCode({
+      plugins: [
+        pluginLineNumbers(),
+      ],
+      styleOverrides: {
+        frames: {
+          shadowColor: '#FFF',
+        },
       },
-    },
-  }), mdx(), vue()],
+    }), 
+    mdx({
+      remarkPlugins: [
+        remarkLinkCard,
+        remarkAlert,
+        remarkMath,
+      ],
+      rehypePlugins: [rehypeKatex],
+    }), 
+    vue(),
+  ],
 
   vite: {
     plugins: [tailwindcss()]
