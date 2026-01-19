@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/vue": "^5.1.4",
-    "@expressive-code/plugin-line-numbers": "^0.41.3",
+    "@expressive-code/plugin-line-numbers": "^0.41.6",
     "@fontsource/m-plus-rounded-1c": "^5.2.9",
     "@pagefind/default-ui": "^1.4.0",
     "@tailwindcss/vite": "^4.1.17",
