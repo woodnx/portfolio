@@ -17,15 +17,15 @@
     "@fontsource/m-plus-rounded-1c": "^5.2.9",
     "@pagefind/default-ui": "^1.4.0",
     "@tailwindcss/vite": "^4.1.17",
-    "astro": "^5.16.9",
-    "astro-expressive-code": "^0.41.3",
+    "astro": "^5.16.10",
+    "astro-expressive-code": "^0.41.6",
     "astro-icon": "^1.1.5",
-    "daisyui": "^5.5.11",
+    "daisyui": "^5.5.14",
     "dayjs": "^1.11.19",
     "pagefind": "^1.4.0",
-    "tailwindcss": "^4.1.17",
+    "tailwindcss": "^4.1.18",
     "tocbot": "^4.36.4",
-    "vue": "^3.5.25"
+    "vue": "^3.5.26"
   },
   "devDependencies": {
     "@iconify-json/devicon": "^1.2.52",
