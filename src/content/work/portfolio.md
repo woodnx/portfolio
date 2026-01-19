@@ -13,6 +13,37 @@ alt: ポートフォリオのスクリーンショット
 # 概要
 自分自身のことや作ったものを事細かに書いたページ。開発経緯など技術的なこと以外は[Blog](/posts/uunk21jpjxk0pzuq)を参照されたい。
 
+## サイトの構成
+本ポートフォリオは、大きく以下の4つのページに別れている。
+- `Top`
+- `Chronicles`
+- `Works`
+- `Blog`
+
+### `Top`ページ
+このサイトに訪問した人が必ず見るページ。
+初期の頃は、このページに載せるコンテンツがなかなか思いつかなかったが、結局、自分のスキルや好きなことといった、About me 的なページになった。
+
+### `Chronicles`ページ
+自分のこれまでの歴史を時系列に見ることができる。
+これだけで、自分がどんなことをしてきたのか、何を目的に歩んできたのかがわかるページになっている。
+研究内容や自分の経歴など、あまり詳しく書いていないこともあるのでこれから充実させていきたい。
+
+`Works`ページと連携して、`Chronicles`をクリックしたら`Works`へ飛べるようにしたい。
+
+### `Works`ページ
+自分が今まで作ったものをまとめたページ。プログラミング以外につくったものもまとめていく予定。どこまで遡れるかわからないけど。
+
+Worksの各リンクに飛ぶと、その作ったものの詳細を確認できる。
+開発経緯やそれがどのように自分に影響したかなど、詳しく記していく予定。
+
+### `Blog`ページ
+個人ブログ。あまり書いていないので充実させていきたい。
+
+本当は`blog.woodnx.com`みたいなサブドメインのほうが良かったのだが、`index`ページに更新情報を載せる都合、ポートフォリオに組み込む形となった[^1]。
+
+[^1]: 書いている途中に思ったのだが、RSSフィードを使えばうまく行けるのではと模索中
+
 # 技術スタック
 本ポートフォリオは、静的Webサイトを作成できるフレームワークである[Astro](https://docs.astro.build/ja/getting-started/)を用いた。技術選定にあたって、考慮した点を以下に示す。
 
@@ -21,9 +52,10 @@ alt: ポートフォリオのスクリーンショット
 - キャッチアップの容易さ
 - 日本語文献が豊富
 
-個人的にうれしかったのは、日本語のチュートリアルがあったことである。有志に感謝したい。
+個人的にうれしかったのは、日本語のチュートリアルがあったことである。有志に感謝。
 
-割とPureに近い状態でHTMLやCSSを扱いながら、コンポーネントスタイルでプログラミングできるのが、とても魅力的に感じた。Vue.jsやSvelteも同じようなことができなくはないが、静的サイトに特化したのが開発体験の良さにつながっているように思う。
+割とPureに近い状態でHTMLやCSSを扱いながら、コンポーネントスタイルでプログラミングできるのが、とても魅力的に感じた。
+Vue.jsやSvelteも同じようなことができなくはないが、静的サイトに特化したのが開発体験の良さにつながっているように思う。
 
 ## ライブラリ
 ### [tailwindcss](https://tailwindcss.com/)
@@ -47,15 +79,12 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 import { customAlphabet } from 'nanoid';
-import dayjs from 'dayjs';
 
-const directory = './src/content/blog';
+const directory = './src/content/post';
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 16);
 const frontmatter = {
-  layout: '@/layouts/PostLayout.astro',
   title: '',
-  publishedAt: dayjs().format('YYYY-MM-DD'),
-  description: '',
+  icon: '',
   category: '',
   tags: [],
 };
@@ -76,7 +105,8 @@ console.log(`Markdown file created at: ${filePath}`);
 ```
 
 ### 目次
-[tocbot](https://tscanlin.github.io/tocbot/#)のような自動で目次を作ってくれるライブラリもあるが、時間の都合上自前で用意した。デザインに納得していなので、いずれtocbotに移行するかも。
+[tocbot](https://tscanlin.github.io/tocbot/#)のような自動で目次を作ってくれるライブラリもあるが、時間の都合上自前で用意した。
+デザインに納得していなので、いずれtocbotに移行するかも。
 
 ```astro title="TableOfContents.astro" wrap
 ---
@@ -94,7 +124,7 @@ const { headings } = Astro.props;
   <div class="toc px-4 py-2 rounded-b-lg bg-white">
     <ol class="">
       {headings.map(({slug, depth, text}) => (
-        <li class="relative pl-6 before:bg-sky-600 before:rounded-full before:absolute before:h-[8px] before:w-[8px] before:top-[0.6em] before:-left-[0.125em]">
+        <li class="relative pl-6 before:bg-sky-600 before:rounded-full before:absolute before:h-2 before:w-2 before:top-[0.6em] before:-left-[0.125em]">
           <a 
             class={`${depth == 1 ? "font-bold" : "pl-[1em]"}`}
             href={`#${slug}`}
@@ -111,21 +141,20 @@ const { headings } = Astro.props;
 
 ## サイト全般のデザイン
 ### [あゆたそどっとこむ](https://portfolio.ayutaso.com/)
-`About me`ページはだいたいこの方を参考にした、というよりほぼパクリ...? サイト全体のデザインも出来る限り似てしまうのを避けようと努力したが、結局ジェネリックみたいな感じになってしまった。本当に申し訳ない。
+`About me`ページはだいたいこの方を参考にした、というよりほぼパクリ...? 
+サイト全体のデザインも出来る限り似てしまうのを避けようと努力したが、結局ジェネリックみたいな感じになってしまった。本当に申し訳ない。
 
 ## 機能個別のデザイン
 ### [нуль](https://hypb.dev/)
 `Works`の一覧表示用カードや`Blog`での検索機能のデザインを参考にした。
 
-この方のサイト、全体的なデザインが洗練されている。自分のポートフォリオもこんなサイトにしてみたいが、デザインセンスが皆無なので時間がかかりそう。
+この方のサイト、全体的なデザインが洗練されている。
+自分のポートフォリオもこんなサイトにしてみたいが、デザインセンスが皆無なので時間がかかりそう。
 
 ### [Zenn](https://zenn.dev/)
 言わずと知れたテックブログサイト。
 
 記事の一覧表示の際に表示されるコンテンツのデザインを、アイコンの表示方法も含めて参考にした。
-
-### [ラムダ技術部](https://xn--6ck3c0a.com/)
-Youtubeなどで活躍されておられるラムダ技術部さんのサイト。本ポートフォリオでは、`About me`内の`History`でのデザインにおいて参考にした
 
 # 技術的な
 ## フォント関連
@@ -134,7 +163,8 @@ Youtubeなどで活躍されておられるラムダ技術部さんのサイト�
 ## CSS
 `Works`や`Blog`の記事の本文はMarkdown記法で記述している。AstroはデフォルトでGithub Flavor Markdown (GFM) に対応しているが、そのスタイルは自前で用意しなければならない。そのため、[この記事](https://qiita.com/__mick/items/c80fab6c185a41882880)を参考にしてGithubのCSSテーマを本文に適用した。
 
-なお、このCSSを適用しても箇条書きの適用がうまくされない場合がある。これは、`list-style-type`が正しく設定されないためであるが、その場合はCSSファイルの当該箇所を以下のようにすればよい。
+なお、このCSSを適用しても、箇条書きをうまく表示されないことがある。
+これは、`list-style-type`が正しく設定されないためであるが、その場合はCSSファイルの当該箇所を以下のようにすればよい。
 ```css ins={8-49} del={1-7} startLineNumber=440 frame="terminal"
 .markdown-body ul,
 .markdown-body ol {
@@ -185,11 +215,7 @@ Youtubeなどで活躍されておられるラムダ技術部さんのサイト�
 }
 ```
 
-# おわりに
-ようやく自分のポートフォリオを作ることができた。
-せっかく作ったので、コンテンツやブログ等、積極的に充実させていきたい。
-
-## これからやりたいこと
+# これからやりたいこと
 - [ ] 各種SNSリンクの追加
 - [ ] GitHub Actionsによる自動校正&デプロイ
 - [ ] スキル欄の充実
