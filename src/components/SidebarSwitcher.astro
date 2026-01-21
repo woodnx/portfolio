@@ -1,0 +1,110 @@
+---
+interface Props {
+  defaultTab?: "profile" | "toc";
+}
+
+const { defaultTab = "profile" } = Astro.props;
+const isProfileDefault = defaultTab === "profile";
+const isTocDefault = defaultTab === "toc";
+---
+
+<div class="sidebar-switcher">
+  <input
+    id="sidebar-tab-profile"
+    type="radio"
+    name="sidebar-tab"
+    checked={isProfileDefault}
+  />
+  <input
+    id="sidebar-tab-toc"
+    type="radio"
+    name="sidebar-tab"
+    checked={isTocDefault}
+  />
+
+  <div class="tabs mb-3">
+    <span class="tab-indicator" aria-hidden="true"></span>
+    <label
+      for="sidebar-tab-profile"
+      class="tab flex-1 text-center px-3 py-2 rounded-md cursor-pointer select-none"
+    >
+      プロフィール
+    </label>
+    <label
+      for="sidebar-tab-toc"
+      class="tab flex-1 text-center px-3 py-2 rounded-md cursor-pointer select-none"
+    >
+      目次
+    </label>
+  </div>
+
+  <div class="panels">
+    <section class="panel panel-profile">
+      <slot name="profile" />
+    </section>
+    <section class="panel panel-toc">
+      <slot name="toc" />
+    </section>
+  </div>
+</div>
+
+<style>
+  .sidebar-switcher {
+    position: relative;
+  }
+
+  .sidebar-switcher input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .tabs {
+    position: relative;
+    display: flex;
+    padding: 3px;
+    border-radius: 999px;
+    background: white;
+  }
+
+  .tab {
+    position: relative;
+    z-index: 1;
+    color: #0369a1;
+    font-weight: 600;
+    transition: color 180ms ease;
+  }
+
+  .tab-indicator {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: calc(50% - 3px);
+    height: calc(100% - 6px);
+    border-radius: 999px;
+    background: #0284c7;
+    transform: translateX(0%);
+    transition: transform 220ms ease;
+  }
+
+  .panel {
+    display: none;
+  }
+
+  #sidebar-tab-profile:checked ~ .panels .panel-profile {
+    display: block;
+  }
+
+  #sidebar-tab-toc:checked ~ .panels .panel-toc {
+    display: block;
+  }
+
+  #sidebar-tab-profile:checked ~ .tabs label[for="sidebar-tab-profile"],
+  #sidebar-tab-toc:checked ~ .tabs label[for="sidebar-tab-toc"] {
+    color: #ffffff;
+  }
+
+  #sidebar-tab-toc:checked ~ .tabs .tab-indicator {
+    transform: translateX(100%);
+  }
+</style>

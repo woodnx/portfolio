@@ -11,4 +11,5 @@ const { pageTitle } = Astro.props;
 
 <BaseLayout pageTitle={pageTitle}>
   <slot />
+  <slot name="sidebar" slot="sidebar" />
 </BaseLayout>

@@ -32,16 +32,20 @@ const { pageTitle, headerTitle = "@woodnx.com" } = Astro.props;
   </head>
   <body data-pagedind-ignore class="mx-auto max-w-6xl">
     <div class="flex flex-col min-h-screen gap-4">
-      <Header class="flex-shrink-0" title={headerTitle} />
+      <Header class="shrink-0" title={headerTitle} />
 
       <div class="flex-1 grid grid-cols-1 lg:grid-cols-7 gap-y-4 lg:gap-x-4">
-        <ProfileCard class="col-span-2 order-2 lg:order-1" />
+        <aside class="col-span-2 order-2 lg:order-1 lg:sticky lg:top-6 lg:self-start">
+          <slot name="sidebar">
+            <ProfileCard />
+          </slot>
+        </aside>
         <main class="col-span-5 order-1 lg:order-2">
           <slot />
         </main>
       </div>
 
-      <Footer class="flex-shrink-0 lg:mb-4" />
+      <Footer class="shrink-0 lg:mb-4" />
     </div>
   </body>
 </html>

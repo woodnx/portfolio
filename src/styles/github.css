@@ -141,6 +141,14 @@
   vertical-align: text-bottom;
 }
 
+.markdown-body {
+  transform: rotate(0.01deg);
+  -moz-transform: rotate(0.01deg);
+  -ms-transform: rotate(0.01deg);
+  -o-transform: rotate(0.01deg);
+  -webkit-transform: rotate(0.01deg);
+}
+
 .markdown-body h1:hover .anchor .octicon-link:before,
 .markdown-body h2:hover .anchor .octicon-link:before,
 .markdown-body h3:hover .anchor .octicon-link:before,
@@ -1271,7 +1279,6 @@
   border-radius: 0.5rem;
   margin: 1rem 0;
   text-decoration: none;
-  /* 必要に応じて調整 */
 }
 
 .markdown-alert {

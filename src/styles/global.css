@@ -9,17 +9,16 @@ html {
 }
 
 html, body {
-  background-color: #eaf1f5;
+  background-color: #E9EDF3;
   line-height: 1.6;
 }
 
 body {
-  
   display: flex;
   flex-direction: column;
 }
 
-body footer, body p, body span, a, body dl, h1, h2, h3, h4, h5, h6, body li {
+footer, p, span, a, dl, h1, h2, h3, h4, h5, h6, li, label {
   transform: rotate(0.03deg);
   -moz-transform: rotate(0.03deg);
   -ms-transform: rotate(0.03deg);
