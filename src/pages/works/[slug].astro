@@ -6,6 +6,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Badge from "@/components/Badge.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
 import dayjs from "dayjs";
+import YouTube from "@/components/YouTube.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("work");
@@ -86,7 +87,7 @@ const developed = developedStart + developedEnd;
         data-pagefind-body
         class="markdown-body px-8 py-6 rounded-b-lg bg-white"
       >
-        <Content />
+        <Content components={{ YouTube }} />
       </div>
     </article>
   </div>
