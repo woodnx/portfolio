@@ -12,6 +12,7 @@ overrides:
   h3@<=1.15.4: '>=1.15.5'
   qs@<6.14.1: '>=6.14.1'
   tar@<=7.5.2: '>=7.5.3'
+  tar@<=7.5.3: '>=7.5.4'
   undici@>=7.0.0 <7.18.2: '>=7.18.2'
 
 importers:
@@ -4684,8 +4685,8 @@ packages:
   tar-stream@3.1.7:
     resolution: {integrity: sha512-qJj60CXt7IU1Ffyc3NJMjh6EkuCFej46zUqJ4J7pqYlThyd9bO0XBTmcOIhSzZJVWfsLks0+nle/j538YAW9RQ==}
 
-  tar@7.5.3:
-    resolution: {integrity: sha512-ENg5JUHUm2rDD7IvKNFGzyElLXNjachNLp6RaGf4+JOgxXHkqA+gq81ZAMCUmtMtqBsoU62lcp6S27g1LCYGGQ==}
+  tar@7.5.6:
+    resolution: {integrity: sha512-xqUeu2JAIJpXyvskvU3uvQW8PAmHrtXp2KDuMJwQqW8Sqq0CaZBAQ+dKS3RBXVhU4wC5NjAdKrmh84241gO9cA==}
     engines: {node: '>=18'}
 
   text-decoder@1.2.3:
@@ -5939,7 +5940,7 @@ snapshots:
       local-pkg: 1.1.2
       pathe: 2.0.3
       svgo: 3.3.2
-      tar: 7.5.3
+      tar: 7.5.6
     transitivePeerDependencies:
       - supports-color
 
@@ -11447,7 +11448,7 @@ snapshots:
       - react-native-b4a
     optional: true
 
-  tar@7.5.3:
+  tar@7.5.6:
     dependencies:
       '@isaacs/fs-minipass': 4.0.1
       chownr: 3.0.0
