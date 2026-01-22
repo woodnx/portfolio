@@ -12,12 +12,12 @@ defineProps<{
 <template>
   <div class="flex items-start gap-4">
     <!-- 月の表示 -->
-    <div class="flex-shrink-0 w-16 text-right">
+    <div class="shrink-0 w-16 text-right">
       <div class="text-sm text-gray-600">{{ dayjs(date).format("MMM") }}</div>
     </div>
 
     <!-- 丸 -->
-    <div class="relative flex-shrink-0 w-6 flex justify-center">
+    <div class="relative shrink-0 w-6 flex justify-center">
       <div
         class="w-2 h-2 rounded-full bg-sky-600 z-10 relative"
         style="top: calc(var(--spacing) * 1.5)"
@@ -27,9 +27,7 @@ defineProps<{
     <!-- コンテンツ -->
     <div class="flex-1 pb-2">
       <div v-if="description && description.length != 0">
-        <div
-          class="bg-white p-4 rounded-tr-4xl rounded-bl-4xl rounded-tl-lg rounded-br-lg"
-        >
+        <div class="bg-white p-4 rounded-2xl">
           <h3 class="font-semibold text-lg text-sky-600 mb-2">
             {{ title }}
           </h3>
