@@ -1,5 +1,7 @@
 // @ts-check
 import { defineConfig, passthroughImageService } from 'astro/config';
+import mdx from '@astrojs/mdx';
+import vue from '@astrojs/vue';
 
 // 3rd-party plugin
 import icon from 'astro-icon';
@@ -10,13 +12,11 @@ import remarkLinkCard from 'remark-link-card';
 import { remarkAlert } from 'remark-github-blockquote-alert';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import swup from '@swup/astro';
 
 // user defined plugin
 import { remarkModifiedTime } from './src/scripts/remark-modified-time.mjs';
 
-import mdx from '@astrojs/mdx';
-
-import vue from '@astrojs/vue';
 
 // https://astro.build/config
 export default defineConfig({
@@ -44,6 +44,9 @@ export default defineConfig({
       rehypePlugins: [rehypeKatex],
     }), 
     vue(),
+    swup({
+      containers: ["main", "aside"],
+    }),
   ],
 
   vite: {

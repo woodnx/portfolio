@@ -20,6 +20,7 @@
     "@expressive-code/plugin-line-numbers": "^0.41.6",
     "@fontsource/m-plus-rounded-1c": "^5.2.9",
     "@pagefind/default-ui": "^1.4.0",
+    "@swup/astro": "^1.7.0",
     "@tailwindcss/vite": "^4.1.17",
     "astro": "^5.16.10",
     "astro-expressive-code": "^0.41.6",

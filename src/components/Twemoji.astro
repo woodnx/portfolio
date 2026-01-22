@@ -4,27 +4,8 @@ interface Props {
   size?: string
 }
 
-const { icon } = Astro.props;
+const { icon, size } = Astro.props;
 ---
-<div id="twemoji">
+<div class="twemoji" style={size ? `--twemoji-size:${size};` : ""}>
   {icon}
 </div>
-
-<script>
-// @ts-ignore
-twemoji.parse(document.getElementById('twemoji'));
-</script>
-
-<style>
-  #twemoji {
-    width: 3em;
-    height: 3em;
-  }
-
-  @media (min-width: 768px) {
-    #twemoji {
-      width: 4.25em;
-      height: 4.25em;
-    }
-  }
-</style>

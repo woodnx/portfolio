@@ -30,11 +30,9 @@ const icon =
   _icon || (category == "Life" ? "☕️" : category == "Tech" ? "⚒️" : "🗒️");
 ---
 
-<div
-  class="flex items-center gap-6 p-6 rounded-tr-4xl rounded-bl-4xl rounded-tl-lg rounded-br-lg bg-white"
->
+<div class="flex items-center gap-6 p-6 rounded-2xl bg-white">
   <a class="justify-self-center" href={`/posts/${id}`} style="cursor:pointer">
-    <Twemoji icon={icon} />
+    <Twemoji icon={icon} size="clamp(2.25rem, 4vw, 3.25rem)" />
   </a>
   <div class="flex flex-col">
     <a class="flex flex-col group" href={`/posts/${id}`} style="cursor:pointer">
@@ -63,7 +61,7 @@ const icon =
         <Icon name="tabler:calendar-week" />
         {published}
       </p>
-      <div class="w-[100%] md:hidden"></div>
+      <div class="w-full md:hidden"></div>
       <Badge
         label={category}
         link={`/categories/${category}`}

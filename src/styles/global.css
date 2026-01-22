@@ -30,6 +30,28 @@ footer, p, span, a, dl, h1, h2, h3, h4, h5, h6, li, label {
   box-sizing: border-box;
 }
 
+.twemoji {
+  --twemoji-size: 3em;
+  width: var(--twemoji-size);
+  height: var(--twemoji-size);
+  font-size: var(--twemoji-size);
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.twemoji img.twemoji-img {
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .twemoji {
+    --twemoji-size: 4.25em;
+  }
+}
+
 h1 {
   font-size: 2rem;
   font-weight: bold;

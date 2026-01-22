@@ -51,6 +51,7 @@ const isTocDefault = defaultTab === "toc";
 <style>
   .sidebar-switcher {
     position: relative;
+    overflow-x: hidden;
   }
 
   .sidebar-switcher input {
@@ -87,16 +88,33 @@ const isTocDefault = defaultTab === "toc";
     transition: transform 220ms ease;
   }
 
+  .panels {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
   .panel {
-    display: none;
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(12px);
+    transition:
+      opacity 90ms ease,
+      transform 100ms ease,
+      visibility 0ms linear 100ms;
   }
 
-  #sidebar-tab-profile:checked ~ .panels .panel-profile {
-    display: block;
-  }
-
+  #sidebar-tab-profile:checked ~ .panels .panel-profile,
   #sidebar-tab-toc:checked ~ .panels .panel-toc {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(0);
+    transition:
+      opacity 220ms ease,
+      transform 220ms ease,
+      visibility 0ms;
   }
 
   #sidebar-tab-profile:checked ~ .tabs label[for="sidebar-tab-profile"],
