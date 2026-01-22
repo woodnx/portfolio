@@ -46,7 +46,7 @@ const { headings } = Astro.props;
   );
   const headingIds = tocLinks
     .map((link) => link.getAttribute("href"))
-    .filter(Boolean)
+    .filter((href): href is string => typeof href === "string")
     .map((href) => decodeURIComponent(href.slice(1)));
 
   const headings = headingIds
