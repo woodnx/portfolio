@@ -12,18 +12,18 @@ interface Props {
 const { title, description, image, id } = Astro.props;
 ---
 
-<div class="relative rounded-tr-4xl rounded-bl-4xl rounded-tl-lg rounded-br-lg">
+<div class="relative rounded-2xl">
   <a href={`/works/${id}`}>
     <figure>
       <Image
         src={image}
         alt=""
         inferSize
-        class="rounded-tr-4xl rounded-bl-4xl rounded-tl-lg rounded-br-lg object-cover aspect-square"
+        class="rounded-2xl object-cover aspect-square"
       />
     </figure>
     <div
-      class="absolute flex flex-col justify-end p-3 pt-2 w-full h-1/3 left-0 bottom-0 bg-neutral-500 text-white opacity-0 hover:opacity-100 rounded-bl-4xl rounded-br-lg"
+      class="absolute flex flex-col justify-end p-3 pt-2 w-full h-1/3 left-0 bottom-0 bg-neutral-500 text-white opacity-0 hover:opacity-100 rounded-b-2xl"
     >
       <h3 class="text-2xl">{title}</h3>
       <p class="mb-2 line-clamp-1">

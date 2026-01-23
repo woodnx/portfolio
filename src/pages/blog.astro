@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
 import dayjs from "dayjs";
-import BlogLayout from "@/layouts/BlogLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import Badge from "@/components/Badge.astro";
 import Search from "@/components/Search.astro";
@@ -24,7 +24,7 @@ const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
 const pageTitle = "Blog";
 ---
 
-<BlogLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle}>
   <div class="grid grid-cols-1 gap-4">
     {
       resentPosts.map((post) => (
@@ -43,4 +43,4 @@ const pageTitle = "Blog";
   <!-- <Section title="Series" class="mt-4">
     {series}
   </Section> -->
-</BlogLayout>
+</BaseLayout>

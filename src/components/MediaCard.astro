@@ -1,0 +1,49 @@
+---
+interface Props {
+  title: string;
+  year: string;
+  note: string;
+  tags: string[];
+  thumbnail?: string | null;
+}
+
+const { title, year, note, tags, thumbnail } = Astro.props;
+---
+
+<article class="rounded-2xl border-2 border-sky-100 bg-white/80 shadow-sm overflow-hidden">
+  <div class="grid grid-cols-[96px_1fr] gap-3 p-4">
+    <div class="w-24 h-36 rounded-xl bg-slate-100 overflow-hidden">
+      {
+        thumbnail ? (
+          <img
+            src={thumbnail}
+            alt={`${title}のサムネイル`}
+            class="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <div class="flex items-center justify-center w-full h-full text-xs text-slate-400">
+            No Image
+          </div>
+        )
+      }
+    </div>
+    <div class="flex flex-col">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="text-lg font-bold text-slate-700">{title}</h3>
+        <span class="text-xs text-slate-500">{year}</span>
+      </div>
+      <p class="mt-2 text-sm text-slate-600">
+        {note}
+      </p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <span class="px-2 py-1 text-xs rounded-full bg-slate-100 text-slate-600">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</article>

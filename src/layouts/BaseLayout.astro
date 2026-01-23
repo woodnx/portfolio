@@ -3,6 +3,7 @@ import "@/styles/global.css";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import ProfileCard from "@/components/ProfileCard.astro";
+import twemojiClient from "../scripts/twemoji-client.ts?url";
 
 interface Props {
   pageTitle: string;
@@ -22,9 +23,7 @@ const { pageTitle, headerTitle = "@woodnx.com" } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <script
-      src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js"
-      crossorigin="anonymous"></script>
+    <script type="module" src={twemojiClient}></script>
     <script
       src="https://cdn.jsdelivr.net/gh/airreader/github-code-embedder@v0/dist/index.js"
     ></script>
@@ -32,16 +31,22 @@ const { pageTitle, headerTitle = "@woodnx.com" } = Astro.props;
   </head>
   <body data-pagedind-ignore class="mx-auto max-w-6xl">
     <div class="flex flex-col min-h-screen gap-4">
-      <Header class="flex-shrink-0" title={headerTitle} />
+      <Header class="shrink-0" title={headerTitle} />
 
       <div class="flex-1 grid grid-cols-1 lg:grid-cols-7 gap-y-4 lg:gap-x-4">
-        <ProfileCard class="col-span-2 order-2 lg:order-1" />
-        <main class="col-span-5 order-1 lg:order-2">
+        <aside
+          class="col-span-2 order-2 lg:order-1 lg:sticky lg:top-6 lg:self-start"
+        >
+          <slot name="sidebar">
+            <ProfileCard />
+          </slot>
+        </aside>
+        <main class="transition-fade col-span-5 order-1 lg:order-2">
           <slot />
         </main>
       </div>
 
-      <Footer class="flex-shrink-0 lg:mb-4" />
+      <Footer class="shrink-0 lg:mb-4" />
     </div>
   </body>
 </html>

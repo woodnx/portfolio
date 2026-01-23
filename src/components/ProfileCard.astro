@@ -14,11 +14,8 @@ const name = "woodnx";
 const { class: className } = Astro.props;
 ---
 
-<aside
-  class:list={[
-    "p-4 bg-white rounded-tr-4xl rounded-bl-4xl  rounded-tl-lg rounded-br-lg flex flex-col gap-2 items-center self-start",
-    className,
-  ]}
+<div
+  class:list={["p-4 flex flex-col gap-2 items-center self-start", className]}
 >
   <div class="w-42">
     <Image
@@ -51,4 +48,4 @@ const { class: className } = Astro.props;
     description="何かをつくること、飲み会🍻、カラオケ🎤"
   />
   <Description vertical label="持病" description="1型糖尿病" />
-</aside>
+</div>

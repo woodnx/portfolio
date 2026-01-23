@@ -10,12 +10,12 @@ const { title, class: className } = Astro.props;
 <section class:list={[className]}>
   {
     title && (
-      <h1 class="text-sky-600 after:absolute after:bottom-0 after:left-0 after:w-full after:h-2 after:rounded-tl-lg after:rounded-tr-4xl after:bg-sky-600">
+      <h1 class="text-sky-600 after:absolute after:bottom-0 after:left-0 after:w-full after:h-2 after:rounded-t-2xl after:bg-sky-600">
         {title}
       </h1>
     )
   }
-  <div class="p-4 bg-white rounded-bl-4xl rounded-br-lg">
+  <div class="p-4 bg-white rounded-b-2xl">
     <slot />
   </div>
 </section>

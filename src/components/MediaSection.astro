@@ -1,0 +1,39 @@
+---
+import Section from "@/components/Section.astro";
+import MediaCard from "@/components/MediaCard.astro";
+
+interface Item {
+  title: string;
+  year: string;
+  note: string;
+  tags: string[];
+  thumbnail?: string | null;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  items: Item[];
+}
+
+const { title, description, items } = Astro.props;
+---
+
+<Section title={title}>
+  <div class="flex flex-col gap-3">
+    <p class="text-sm text-slate-500">
+      {description} / 全 {items.length} 作品
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {items.map((item) => (
+        <MediaCard
+          title={item.title}
+          year={item.year}
+          note={item.note}
+          tags={item.tags}
+          thumbnail={item.thumbnail}
+        />
+      ))}
+    </div>
+  </div>
+</Section>

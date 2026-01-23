@@ -1,0 +1,238 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+import MediaSection from "@/components/MediaSection.astro";
+
+const pageTitle = "Media Log";
+const tmdbApiKey = import.meta.env.TMDB_API_KEY;
+const anilistApiKey = import.meta.env.ANILIST_API_KEY;
+
+const anilistQuery = `
+  query ($search: String, $type: MediaType) {
+    Media(search: $search, type: $type) {
+      coverImage {
+        extraLarge
+        large
+        medium
+      }
+    }
+  }
+`;
+
+const fetchTmdbPoster = async (title) => {
+  if (!tmdbApiKey) {
+    return null;
+  }
+
+  try {
+    const url = new URL("https://api.themoviedb.org/3/search/movie");
+    url.searchParams.set("query", title);
+    url.searchParams.set("language", "ja-JP");
+    url.searchParams.set("include_adult", "false");
+    url.searchParams.set("api_key", tmdbApiKey);
+
+    const response = await fetch(url);
+    if (!response.ok) {
+      return null;
+    }
+
+    const data = await response.json();
+    const posterPath = data?.results?.[0]?.poster_path;
+    if (!posterPath) {
+      return null;
+    }
+
+    return `https://image.tmdb.org/t/p/w500${posterPath}`;
+  } catch {
+    return null;
+  }
+};
+
+const fetchAniListCover = async (title, type) => {
+  try {
+    const response = await fetch("https://graphql.anilist.co", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...(anilistApiKey ? { Authorization: `Bearer ${anilistApiKey}` } : {}),
+      },
+      body: JSON.stringify({
+        query: anilistQuery,
+        variables: {
+          search: title,
+          type,
+        },
+      }),
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const data = await response.json();
+    const cover = data?.data?.Media?.coverImage;
+    return cover?.extraLarge ?? cover?.large ?? cover?.medium ?? null;
+  } catch {
+    return null;
+  }
+};
+
+const movies = [
+  {
+    title: "シン・ゴジラ",
+    year: "2016",
+    tags: ["怪獣", "政治ドラマ", "日本映画"],
+    note: "緊迫した災害対応の流れが面白い。",
+    kind: "movie",
+  },
+  {
+    title: "バック・トゥ・ザ・フューチャー",
+    year: "1985",
+    tags: ["SF", "青春"],
+    note: "テンポと伏線回収が最高。",
+    kind: "movie",
+  },
+  {
+    title: "タイタニック",
+    year: "1997",
+    tags: ["恋愛", "歴史"],
+    note: "時代背景と音楽が美しい。",
+    kind: "movie",
+  },
+];
+
+const anime = [
+  {
+    title: "名探偵コナン",
+    year: "1996-",
+    tags: ["ミステリー", "長編シリーズ"],
+    note: "劇場版の事件構成が好き。",
+    kind: "anime",
+  },
+  {
+    title: "宇宙戦艦ヤマト2199",
+    year: "2012",
+    tags: ["SF", "リメイク"],
+    note: "戦略と人間ドラマのバランスが良い。",
+    kind: "anime",
+  },
+  {
+    title: "ガールズ&パンツァー",
+    year: "2012",
+    tags: ["ミリタリー", "学園"],
+    note: "試合の駆け引きが楽しい。",
+    kind: "anime",
+  },
+  {
+    title: "君の名は。",
+    year: "2016",
+    tags: ["青春", "ファンタジー"],
+    note: "映像美と音楽が刺さる。",
+    kind: "anime",
+  },
+  {
+    title: "エヴァンゲリオン",
+    year: "1995-",
+    tags: ["SF", "心理"],
+    note: "世界観の密度が高い。",
+    kind: "anime",
+  },
+];
+
+const manga = [
+  {
+    title: "NEW GAME!",
+    year: "2013-2021",
+    tags: ["日常", "お仕事"],
+    note: "制作現場の空気感が好き。",
+    kind: "manga",
+  },
+  {
+    title: "ふつうの軽音部",
+    year: "2023-",
+    tags: ["音楽", "学園"],
+    note: "会話のテンポが良い。",
+    kind: "manga",
+  },
+];
+
+const attachThumbnail = async (item) => {
+  const thumbnail =
+    item.kind === "movie"
+      ? await fetchTmdbPoster(item.title)
+      : await fetchAniListCover(
+          item.title,
+          item.kind === "anime" ? "ANIME" : "MANGA"
+        );
+
+  return {
+    ...item,
+    thumbnail,
+  };
+};
+
+const moviesWithThumbnails = await Promise.all(
+  movies.map((item) => attachThumbnail(item))
+);
+const animeWithThumbnails = await Promise.all(
+  anime.map((item) => attachThumbnail(item))
+);
+const mangaWithThumbnails = await Promise.all(
+  manga.map((item) => attachThumbnail(item))
+);
+
+const sections = [
+  {
+    title: "映画",
+    description: "印象に残った作品を中心にメモ。",
+    items: moviesWithThumbnails,
+  },
+  {
+    title: "アニメ",
+    description: "シリーズものも含めた視聴記録。",
+    items: animeWithThumbnails,
+  },
+  {
+    title: "漫画",
+    description: "読んだ作品の簡単な感想。",
+    items: mangaWithThumbnails,
+  },
+];
+---
+
+<BaseLayout pageTitle={pageTitle} headerTitle="Media Log">
+  <div class="flex flex-col gap-4">
+    <Section title="Media Log">
+      <div class="flex flex-col gap-2">
+        <p class="text-slate-600">
+          これまでに観たり読んだりした映画・アニメ・漫画の情報まとめ。
+        </p>
+        <div class="flex flex-wrap gap-2 text-xs text-slate-500">
+          <span class="px-2 py-1 rounded-full bg-sky-100 text-sky-700">
+            随時更新
+          </span>
+          <span class="px-2 py-1 rounded-full bg-amber-100 text-amber-700">
+            お気に入り中心
+          </span>
+          {
+            !tmdbApiKey && (
+              <span class="px-2 py-1 rounded-full bg-rose-100 text-rose-700">
+                TMDb APIキー未設定
+              </span>
+            )
+          }
+        </div>
+      </div>
+    </Section>
+
+    {
+      sections.map((section) => (
+        <MediaSection
+          title={section.title}
+          description={section.description}
+          items={section.items}
+        />
+      ))
+    }
+  </div>
+</BaseLayout>

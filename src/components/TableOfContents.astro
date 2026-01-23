@@ -1,25 +1,100 @@
 ---
-import type { MarkdownHeading } from 'astro';
+import type { MarkdownHeading } from "astro";
 
 interface Props {
-  headings: MarkdownHeading[],
+  headings: MarkdownHeading[];
 }
 
 const { headings } = Astro.props;
 ---
-<div>
-  <h2 class="text-sky-600">目次</h2>
-  <hr class="h-1 border-t-0 bg-sky-600 rounded-t-full" />
-  <div class="toc px-4 py-2 rounded-b-lg bg-white">
-    <ol class="">
-      {headings.map(({slug, depth, text}) => (
-        <li class="relative pl-6 before:bg-sky-600 before:rounded-full before:absolute before:h-[8px] before:w-[8px] before:top-[0.6em] before:-left-[0.125em]">
-          <a 
-            class={`${depth == 1 ? "font-bold" : "pl-[1em]"}`}
-            href={`#${slug}`}
-          >{text}</a>
-        </li> 
-      ))}
-    </ol>
-  </div>
-</div>
+
+<nav class="toc text-sm">
+  <ul class="pl-2">
+    {
+      headings.map((heading) => (
+        <li>
+          <a
+            href={`#${heading.slug}`}
+            data-toc-link
+            class={
+              "block p-2 transition-colors rounded-md hover:bg-white hover:text-gray-600 font-medium"
+            }
+            style={`padding-left: ${0.5 + (heading.depth - 1) * 1}rem;`}
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .toc a[aria-current="true"] {
+    background-color: oklch(90.1% 0.058 230.902);
+    color: oklch(50% 0.134 242.749);
+  }
+
+  .toc a[aria-current="true"]:hover {
+    color: oklch(50% 0.134 242.749);
+  }
+</style>
+
+<script>
+  const tocLinks = Array.from(
+    document.querySelectorAll(".toc a[data-toc-link]"),
+  );
+  const headingIds = tocLinks
+    .map((link) => link.getAttribute("href"))
+    .filter((href): href is string => typeof href === "string")
+    .map((href) => decodeURIComponent(href.slice(1)));
+
+  const headings = headingIds
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    tocLinks.forEach((link) => {
+      const linkId = link.getAttribute("href")?.slice(1);
+      if (linkId === id) {
+        link.setAttribute("aria-current", "true");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  if (headings.length > 0) {
+    const offset = 120;
+
+    const updateActive = () => {
+      const scrollY = window.scrollY + offset;
+      let currentId = headingIds[0];
+
+      headings.forEach((heading, index) => {
+        if (!heading) return;
+        const top = heading.getBoundingClientRect().top + window.scrollY;
+        if (top <= scrollY) {
+          currentId = headingIds[index];
+        }
+      });
+
+      setActive(currentId);
+    };
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        updateActive();
+        ticking = false;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", updateActive);
+    window.addEventListener("load", updateActive);
+    updateActive();
+  }
+</script>
