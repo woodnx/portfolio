@@ -44,7 +44,7 @@ const { class: className, title = "@woodnx.com" } = Astro.props;
     </div>
     <ul
       tabindex="0"
-      class="menu dropdown-content bg-base-100 rounded-2xl z-[1] mt-6 w-30 p-2 border-2 border-sky-100"
+      class="menu dropdown-content bg-base-100 rounded-2xl z-1 mt-6 w-30 p-2 border-2 border-sky-100"
     >
       <li>
         <a
@@ -72,6 +72,13 @@ const { class: className, title = "@woodnx.com" } = Astro.props;
           href="/blog/"
           class="font-bold rounded-xl hover:bg-sky-200/50 hover:text-sky-600 active:bg-sky-200/50 active:text-sky-600"
           >Blog</a
+        >
+      </li>
+      <li>
+        <a
+          href="/media/"
+          class="font-bold rounded-xl hover:bg-sky-200/50 hover:text-sky-600 active:bg-sky-200/50 active:text-sky-600"
+          >Media</a
         >
       </li>
     </ul>
