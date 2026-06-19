@@ -46,7 +46,7 @@
     "@types/yargs": "^17.0.35",
     "commander": "^14.0.2",
     "js-yaml": "^4.1.1",
-    "nanoid": "^5.1.6",
+    "nanoid": "^5.1.14",
     "prettier": "3.8.4",
     "prettier-plugin-astro": "0.14.1",
     "textlint": "^15.5.0",
