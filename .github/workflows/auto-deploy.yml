@@ -32,7 +32,7 @@ jobs:
           pnpm run build
 
       - name: Connect to vps with ssh
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1.2.5
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           host: ${{ secrets.SSH_HOST }}
