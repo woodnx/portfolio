@@ -12,7 +12,7 @@
     "jsx": "preserve",
     "jsxImportSource": "react"
   },
-  "extends": "astro/tsconfigs/base",
+  "extends": "astro/tsconfigs/strict",
   "include": [
     ".astro/types.d.ts",
     "**/*"
