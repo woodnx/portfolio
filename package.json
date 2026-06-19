@@ -26,7 +26,7 @@
     "astro": "^6.4.8",
     "astro-expressive-code": "^0.43.1",
     "astro-icon": "^1.1.5",
-    "daisyui": "^5.5.14",
+    "daisyui": "^5.5.23",
     "dayjs": "^1.11.19",
     "mdx-mermaid": "^2.0.3",
     "mermaid": "^11.12.2",
