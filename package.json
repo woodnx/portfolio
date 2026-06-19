@@ -15,28 +15,29 @@
     "esbuild"
   ],
   "dependencies": {
-    "@astrojs/mdx": "^4.3.13",
-    "@astrojs/vue": "^5.1.4",
+    "@astrojs/markdown-remark": "^7.2.0",
+    "@astrojs/mdx": "^6.0.3",
+    "@astrojs/vue": "^6.0.1",
     "@expressive-code/plugin-line-numbers": "^0.41.6",
     "@fontsource/m-plus-rounded-1c": "^5.2.9",
-    "@pagefind/default-ui": "^1.4.0",
-    "@swup/astro": "^1.7.0",
-    "@tailwindcss/vite": "^4.1.17",
-    "astro": "^5.16.10",
-    "astro-expressive-code": "^0.41.6",
+    "@pagefind/default-ui": "^1.5.2",
+    "@swup/astro": "^1.8.0",
+    "@tailwindcss/vite": "^4.3.1",
+    "astro": "^6.4.8",
+    "astro-expressive-code": "^0.43.1",
     "astro-icon": "^1.1.5",
     "daisyui": "^5.5.14",
     "dayjs": "^1.11.19",
     "mdx-mermaid": "^2.0.3",
     "mermaid": "^11.12.2",
-    "pagefind": "^1.4.0",
+    "pagefind": "^1.5.2",
     "rehype-katex": "^7.0.1",
     "remark-github-blockquote-alert": "^2.0.1",
-    "remark-link-card": "^1.3.1",
+    "remark-link-card-plus": "^0.7.4",
     "remark-math": "^6.0.0",
-    "tailwindcss": "^4.1.18",
+    "tailwindcss": "^4.3.1",
     "tocbot": "^4.36.4",
-    "vue": "^3.5.26"
+    "vue": "^3.5.38"
   },
   "devDependencies": {
     "@iconify-json/devicon": "^1.2.52",
@@ -46,12 +47,12 @@
     "commander": "^14.0.2",
     "js-yaml": "^4.1.1",
     "nanoid": "^5.1.6",
-    "prettier": "3.7.4",
+    "prettier": "3.8.4",
     "prettier-plugin-astro": "0.14.1",
     "textlint": "^15.5.0",
     "textlint-rule-preset-ja-technical-writing": "^12.0.2",
     "textlint-rule-prh": "^6.1.0",
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
   }
 }
