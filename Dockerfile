@@ -6,6 +6,8 @@ RUN corepack enable
 
 WORKDIR /app
 COPY . .
+
+ENV CI=true
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 COPY . .
 RUN pnpm run build
