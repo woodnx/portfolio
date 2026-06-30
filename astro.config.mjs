@@ -12,6 +12,7 @@ import { remarkAlert } from "remark-github-blockquote-alert";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import swup from "@swup/astro";
+import yaml from "@rollup/plugin-yaml";
 
 // user defined plugin
 import { remarkModifiedTime } from "./src/scripts/remark-modified-time.mjs";
@@ -38,7 +39,7 @@ export default defineConfig({
   ],
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss(), yaml()],
   },
 
   markdown: {
