@@ -5,7 +5,6 @@ publishedAt: 2026-01-19
 developedStart: "2017"
 tags: [工作]
 category: Other
-pinned: true
 image: ../../images/monopoly.JPEG
 alt: モノポリーの画像
 ---

@@ -7,6 +7,7 @@ tags: [Astro, docker, nodejs, nginx]
 category: Web
 pinned: true
 image: ../../images/portfolio.png
+links: ["https://github.com/woodnx/portfolio"]
 alt: ポートフォリオのスクリーンショット
 ---
 
