@@ -1,11 +1,13 @@
+plugins:
+  mdx: true
 rules: 
   prh: 
     rulePaths: 
       - ./rules.yml
   preset-ja-technical-writing: 
     no-mix-dearu-desumasu: 
-      preferInHeader: である
-      preferInBody: である
+      preferInHeader: ですます
+      preferInBody: ですます
       strict: true
     no-exclamation-question-mark: false
     ja-no-weak-phrase: false

@@ -189,6 +189,9 @@ importers:
       tailwindcss:
         specifier: ^4.3.1
         version: 4.3.2
+      textlint-plugin-mdx:
+        specifier: ^1.1.0
+        version: 1.1.0(typescript@6.0.3)
       tocbot:
         specifier: ^4.36.4
         version: 4.36.8
@@ -1701,7 +1704,7 @@ packages:
     resolution: {integrity: sha512-MfPp06CjRLfXQ3wY0R8vJDYBy/MvVcc9OulEfR0B8Iv9ko+GCNaRZ+EpJYFl27LhKsZK0o420sYCRHCjfCgeUg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
-      rollup: '>=2.80.0'
+      rollup: '>=4.59.0'
     peerDependenciesMeta:
       rollup:
         optional: true
@@ -6158,6 +6161,11 @@ packages:
 
   text-table@0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
+
+  textlint-plugin-mdx@1.1.0:
+    resolution: {integrity: sha512-iEeQO5wW7X0TKChILS45FoPW/e9wrQp8gypAmNTg4DdgYgU3gWT+MbSIshvujD2roCFYVyh2TouZBlsckOYVAA==}
+    peerDependencies:
+      typescript: ^5.0.0
 
   textlint-rule-helper@2.5.0:
     resolution: {integrity: sha512-QIbFPtyqLy0g5BJn8mryk9iHzGYicNaFIpLFPiEnb4RXxrEGeQ2W2aARQ9yEXLIAqo+OwK4ndWBAWkbgJEPzTQ==}
@@ -14534,6 +14542,10 @@ snapshots:
     optional: true
 
   text-table@0.2.0: {}
+
+  textlint-plugin-mdx@1.1.0(typescript@6.0.3):
+    dependencies:
+      typescript: 6.0.3
 
   textlint-rule-helper@2.5.0:
     dependencies:
