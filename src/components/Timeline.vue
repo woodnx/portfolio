@@ -91,6 +91,7 @@ onMounted(() => {
           :title="item.title"
           :description="item.description"
           :date="item.date"
+          :link="item.link"
         />
       </div>
     </div>

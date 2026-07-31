@@ -60,11 +60,13 @@
   description: DxLib を使って、テトリスのガイドラインに準拠するように開発。
   category: 個人開発
   date: 2021-6
+  link: /works/tetris
 
 - title: 高専プロコン 自由部門に参加
-  description: 勉強のモチベーションを挙げるシステムを開発。サブメンバーとして開発に参加し、Webアプリ周りを担当。
+  description: 勉強のモチベーションを挙げるシステムを開発。サブメンバーとして開発に参加し、Webアプリ周りを担当。3位相当となる優秀賞を受賞。
   category: 学生生活
   date: 2021-10
+  link: /works/motivation-age-taro
 
 - title: 松江水灯籠の灯籠制作に参加
   description: 人が近づいたら音楽を鳴らす灯籠を制作。音を鳴らすC++プログラム周りを担当。
@@ -74,6 +76,7 @@
 - title: 『iQbe』開発開始
   category: 個人開発
   date: 2021-12
+  link: /works/iqbe
 
 - title: 高専での研究内容を発表
   category: 研究活動
@@ -100,6 +103,7 @@
 - title: ポートフォリオの作成
   category: 個人開発
   date: 2025-3-30
+  link: /works/portfolio
 
 - title: 東京都立大学大学院に進学
   description: 研究をさらに進めるため、大学院に進学。
