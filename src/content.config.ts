@@ -1,4 +1,5 @@
-import { z, defineCollection } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 import dayjs from "dayjs";
 
@@ -51,6 +52,7 @@ const workCollection = defineCollection({
       category: z.string(),
       tags: z.array(z.string()).optional(),
       pinned: z.boolean().optional(),
+      links: z.array(z.string()).optional(),
     }),
 });
 

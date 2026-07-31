@@ -9,10 +9,11 @@ import SidebarSwitcher from "@/components/SidebarSwitcher.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
 import dayjs from "dayjs";
 import YouTube from "@/components/YouTube.astro";
+import PageLink from "@/components/PageLink.astro";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("work");
-  return blogEntries.map((entry) => ({
+  const workEntries = await getCollection("work");
+  return workEntries.map((entry) => ({
     params: { slug: entry.id, id: entry.id },
     props: { entry },
   }));
@@ -28,6 +29,7 @@ const developedEnd = entry.data.developedEnd
   ? dayjs(entry.data.developedStart).format("YYYY/MM")
   : "";
 const developed = developedStart + developedEnd;
+const links = entry.data.links;
 ---
 
 <BaseLayout pageTitle={entry.data.title}>
@@ -36,10 +38,10 @@ const developed = developedStart + developedEnd;
     <TableOfContents slot="toc" headings={headings} />
   </SidebarSwitcher>
 
-  <p class="text-sky-600 font-bold text-4xl my-3">
+  <p class="text-sky-600 font-bold text-4xl my-4">
     {entry.data.title}
   </p>
-  <div class="flex flex-wrap gap-x-5 gap-y-1 mb-6">
+  <div class="flex flex-wrap gap-x-5 gap-y-1 mb-2">
     <div class="flex items-center gap-0.5">
       <Icon name="tabler:calendar-week" />
       <p>{entry.data.publishedAt}</p>
@@ -56,6 +58,23 @@ const developed = developedStart + developedEnd;
       <Icon name="tabler:calendar-code" />
       <p>{developed}</p>
     </div>
+    {
+      links && (
+        <div class="tagbar flex gap-5 overflow-x-auto">
+          {links.map((link) => {
+            const isGithub = link.includes("github.com");
+            const icon = isGithub
+              ? "tabler:brand-github-filled"
+              : "tabler:world";
+            const label = isGithub ? "Github" : "サイト";
+            return <PageLink label={label} link={link} icon={icon} />;
+          })}
+        </div>
+      )
+    }
+  </div>
+
+  <div class="flex flex-wrap gap-x-5 gap-y-1 mb-6">
     {
       (
         <Badge

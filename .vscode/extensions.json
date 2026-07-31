@@ -1,4 +1,7 @@
 {
-  "recommendations": ["astro-build.astro-vscode"],
+  "recommendations": [
+    "3w36zj6.textlint",
+    "astro-build.astro-vscode"
+  ],
   "unwantedRecommendations": []
 }

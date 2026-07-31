@@ -1,0 +1,23 @@
+---
+import Icon from "node_modules/astro-icon/components/Icon.astro";
+
+interface Props {
+  label: string;
+  link: string;
+  icon: string;
+}
+
+const { label, link, icon } = Astro.props;
+---
+
+<p class="inline-flex items-center underline text-sky-700">
+  <a
+    href={link}
+    class="flex items-center gap-1"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {icon && <Icon name={icon} />}
+    {label}
+  </a>
+</p>

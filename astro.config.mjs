@@ -29,8 +29,10 @@ export default defineConfig({
   integrations: [
     icon(),
     mdx({
-      remarkPlugins: [remarkLinkCard, remarkAlert, remarkMath],
-      rehypePlugins: [rehypeKatex],
+      processor: unified({
+        remarkPlugins: [remarkLinkCard, remarkAlert, remarkMath],
+        rehypePlugins: [rehypeKatex],
+      }),
     }),
     vue(),
     swup({

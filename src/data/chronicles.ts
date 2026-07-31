@@ -6,6 +6,7 @@ export interface Chronicle {
   category: string;
   date: string;
   description?: string;
+  link?: string;
   relation?: string[];
 }
 
@@ -16,6 +17,7 @@ function isChronicle(obj: any): obj is Chronicle {
     typeof obj.category === "string" &&
     typeof obj.date === "string" &&
     (obj.description === undefined || typeof obj.description === "string") &&
+    (obj.link === undefined || typeof obj.link === "string") &&
     (obj.relation === undefined ||
       (Array.isArray(obj.relation) &&
         obj.relation.every((r: any) => typeof r === "string")))

@@ -3,10 +3,13 @@
     "*.css": "tailwindcss"
   },
   "textlint.autoFixOnSave": true,
+  "textlint.run": "onType",
   "textlint.languages": [
-    "markdown"
+    "markdown",
+    "mdx"
   ],
   "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
