@@ -160,7 +160,7 @@ const { headings } = Astro.props;
 
 記事の一覧表示の際に表示されるコンテンツのデザインを、アイコンの表示方法も含めて参考にしました。
 
-# 技術的な
+# 技術的なことについて
 ## フォント関連
 本サイトのフォントには[M PLUS Rounded 1c](https://fonts.google.com/specimen/M+PLUS+Rounded+1c?subset=japanese)を使っていますが、そのままではジャギーが発生してしまいます。そのため、[この記事](https://zipang.dev/css/m-plus-rounded-1c-is-dirty-but-it-is-displayed-neatly-by-adding-css/)を参考に、しかるべき箇所（bodyタグなど）のCSSに`transform:rotateZ(0.03deg);`を追加しました。なお、サイト全体に適用すると、サイト全体が若干傾いて見えるため、body要素などに限定してCSSを追加したほうがよいです。
 
