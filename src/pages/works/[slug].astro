@@ -26,7 +26,7 @@ const lastModified = remarkPluginFrontmatter.lastModified;
 const modified = lastModified && dayjs(lastModified).format("YYYY/MM/DD");
 const developedStart = dayjs(entry.data.developedStart).format("YYYY/MM～");
 const developedEnd = entry.data.developedEnd
-  ? dayjs(entry.data.developedStart).format("YYYY/MM")
+  ? dayjs(entry.data.developedEnd).format("YYYY/MM")
   : "";
 const developed = developedStart + developedEnd;
 const links = entry.data.links;
