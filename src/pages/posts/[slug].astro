@@ -45,13 +45,13 @@ const modified = lastModified && dayjs(lastModified).format("YYYY/MM/DD");
   </div>
 
   <div class="flex flex-wrap gap-x-5 gap-y-1 mb-6">
-    <div class="flex items-center gap-0.5">
-      <Icon name="tabler:calendar-week" />
+    <div class="flex items-center gap-0.5 tooltip" data-tip="記事作成日">
+      <Icon name="tabler:pencil" />
       <p>{entry.data.publishedAt}</p>
     </div>
     {
       modified && (
-        <div class="flex items-center gap-0.5">
+        <div class="flex items-center gap-0.5 tooltip" data-tip="記事更新日">
           <Icon name="tabler:refresh" />
           <p>{modified}</p>
         </div>

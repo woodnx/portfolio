@@ -26,7 +26,7 @@ const lastModified = remarkPluginFrontmatter.lastModified;
 const modified = lastModified && dayjs(lastModified).format("YYYY/MM/DD");
 const developedStart = dayjs(entry.data.developedStart).format("YYYY/MM～");
 const developedEnd = entry.data.developedEnd
-  ? dayjs(entry.data.developedStart).format("YYYY/MM")
+  ? dayjs(entry.data.developedEnd).format("YYYY/MM")
   : "";
 const developed = developedStart + developedEnd;
 const links = entry.data.links;
@@ -42,20 +42,20 @@ const links = entry.data.links;
     {entry.data.title}
   </p>
   <div class="flex flex-wrap gap-x-5 gap-y-1 mb-2">
-    <div class="flex items-center gap-0.5">
-      <Icon name="tabler:calendar-week" />
+    <div class="flex items-center gap-0.5 tooltip" data-tip="記事作成日">
+      <Icon name="tabler:pencil" />
       <p>{entry.data.publishedAt}</p>
     </div>
     {
       modified && (
-        <div class="flex items-center gap-0.5">
+        <div class="flex items-center gap-0.5 tooltip" data-tip="記事更新日">
           <Icon name="tabler:refresh" />
           <p>{modified}</p>
         </div>
       )
     }
-    <div class="flex items-center gap-0.5">
-      <Icon name="tabler:calendar-code" />
+    <div class="flex items-center gap-0.5 tooltip" data-tip="開発期間">
+      <Icon name="tabler:device-imac" />
       <p>{developed}</p>
     </div>
     {

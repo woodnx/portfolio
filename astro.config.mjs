@@ -30,7 +30,16 @@ export default defineConfig({
     icon(),
     mdx({
       processor: unified({
-        remarkPlugins: [remarkLinkCard, remarkAlert, remarkMath],
+        remarkPlugins: [
+          remarkLinkCard,
+          remarkAlert,
+          remarkMath,
+          remarkModifiedTime,
+        ],
+        remarkRehype: {
+          footnoteLabel: "脚注",
+          footnoteLabelTagName: "h1",
+        },
         rehypePlugins: [rehypeKatex],
       }),
     }),
@@ -46,11 +55,17 @@ export default defineConfig({
 
   markdown: {
     processor: unified({
-      remarkPlugins: [remarkModifiedTime],
+      remarkPlugins: [
+        remarkLinkCard,
+        remarkAlert,
+        remarkMath,
+        remarkModifiedTime,
+      ],
       remarkRehype: {
         footnoteLabel: "脚注",
         footnoteLabelTagName: "h1",
       },
+      rehypePlugins: [rehypeKatex],
     }),
   },
 });
