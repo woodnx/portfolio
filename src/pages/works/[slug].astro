@@ -42,20 +42,20 @@ const links = entry.data.links;
     {entry.data.title}
   </p>
   <div class="flex flex-wrap gap-x-5 gap-y-1 mb-2">
-    <div class="flex items-center gap-0.5">
-      <Icon name="tabler:calendar-week" />
+    <div class="flex items-center gap-0.5 tooltip" data-tip="記事作成日">
+      <Icon name="tabler:pencil" />
       <p>{entry.data.publishedAt}</p>
     </div>
     {
       modified && (
-        <div class="flex items-center gap-0.5">
+        <div class="flex items-center gap-0.5 tooltip" data-tip="記事更新日">
           <Icon name="tabler:refresh" />
           <p>{modified}</p>
         </div>
       )
     }
-    <div class="flex items-center gap-0.5">
-      <Icon name="tabler:calendar-code" />
+    <div class="flex items-center gap-0.5 tooltip" data-tip="開発期間">
+      <Icon name="tabler:device-imac" />
       <p>{developed}</p>
     </div>
     {
