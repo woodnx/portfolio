@@ -32,7 +32,7 @@
     "daisyui": "^5.5.14",
     "dayjs": "^1.11.19",
     "mdx-mermaid": "^2.0.3",
-    "mermaid": "^11.12.2",
+    "mermaid": "^11.16.1",
     "pagefind": "^1.5.2",
     "rehype-katex": "^7.0.1",
     "remark-github-blockquote-alert": "^2.0.1",
